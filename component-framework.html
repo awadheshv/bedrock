@@ -1,0 +1,318 @@
+
+<!DOCTYPE html>
+<html  xml:lang="en" lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<title>Component Framework | Bedrock</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content="" />
+		<meta http-equiv="content-language" content="en" />
+		
+		<link href="./css/bootstrap.min.css" rel="stylesheet" />
+		<link href="./css/bootstrap-responsive.min.css" rel="stylesheet" />
+		<link href="./css/docs.css" rel="stylesheet" />
+		<link href="./css/reflow-skin.css" rel="stylesheet" />
+		
+		<link href="http://yandex.st/highlightjs/7.3/styles/github.min.css" rel="stylesheet" />
+		
+		<link href="./css/lightbox.css" rel="stylesheet" />
+		
+		<link href="./css/site.css" rel="stylesheet" />
+		<link href="./css/print.css" rel="stylesheet" media="print" />
+		
+		<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+		<!--[if lt IE 9]>
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+
+	</head>
+
+	<body class="page-component-framework project-bedrock" data-spy="scroll" data-offset="60" data-target="#toc-scroll-target">
+
+		<div class="navbar navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container">
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</a>
+					<a class="brand" href="./">Bedrock</a>
+					<div class="nav-collapse">
+						<ul class="nav pull-right">
+							<li><a href="https://github.com/Citytechinc/bedrock" title="GitHub" class="externalLink">GitHub </a></li>
+							<li><a href="index.html" title="Overview">Overview </a></li>
+							<li class="dropdown active">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">User Guide <b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><a href="adapters.html" title="Adapters">Adapters </a></li>
+									<li class="active"><a href="" title="Component Framework">Component Framework </a></li>
+									<li><a href="constants.html" title="Constants">Constants </a></li>
+									<li><a href="image-rendering.html" title="Image Rendering">Image Rendering </a></li>
+									<li><a href="including-in-aem-projects.html" title="Including in AEM Projects">Including in AEM Projects </a></li>
+									<li><a href="javascript.html" title="JavaScript">JavaScript </a></li>
+									<li><a href="links.html" title="Links">Links </a></li>
+									<li><a href="optionals.html" title="Optionals">Optionals </a></li>
+									<li><a href="predicates.html" title="Predicates">Predicates </a></li>
+									<li><a href="services.html" title="Services">Services </a></li>
+									<li><a href="servlets.html" title="Servlets">Servlets </a></li>
+									<li><a href="injectors.html" title="Sling Models Injectors">Sling Models Injectors </a></li>
+									<li><a href="tag-library.html" title="Tag Library">Tag Library </a></li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Project Documentation <b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li class="dropdown-submenu">
+										<a href="project-info.html" title="Project Information">Project Information </a>
+										<ul class="dropdown-menu">
+											<li><a href="project-summary.html" title="Project Summary">Project Summary </a></li>
+											<li><a href="license.html" title="Project License">Project License </a></li>
+										</ul>
+									</li>
+									<li class="dropdown-submenu">
+										<a href="project-reports.html" title="Project Reports">Project Reports </a>
+										<ul class="dropdown-menu">
+											<li><a href="apidocs/index.html" title="JavaDocs">JavaDocs </a></li>
+											<li><a href="surefire-report.html" title="Surefire Report">Surefire Report </a></li>
+											<li><a href="pmd.html" title="PMD">PMD </a></li>
+											<li><a href="cobertura/index.html" title="Cobertura Test Coverage">Cobertura Test Coverage </a></li>
+											<li><a href="github-report.html" title="GitHub Report">GitHub Report </a></li>
+											<li><a href="jsdoc/index.html" title="JsDocs">JsDocs </a></li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div><!--/.nav-collapse -->
+				</div>
+			</div>
+		</div>
+		
+	<div class="container">
+	
+	<!-- Masthead
+	================================================== -->
+
+	
+	
+	<header class="jumbotron subhead">
+		<div class="row" id="banner">
+			<div class="span12">
+				<div class="pull-left">
+					<a href="http://www.citytechinc.com" id="bannerLeft"><img src="images/logo.png" alt="CITYTECH, Inc."></a>
+				</div>
+				<div class="pull-right">
+										<a href="./" id="bannerRight"><h1>Bedrock</h1></a>
+					<p class="lead"></p>
+				</div>
+			</div>
+		</div>
+
+
+	
+		</header>
+
+	<div class="main-body">
+	<div class="row">
+		<div class="span12">
+			<div class="body-content">
+<div class="section"> 
+ <h2 id="Component_Framework">Component Framework</h2> 
+ <div class="section"> 
+  <h3 id="Overview">Overview</h3> 
+  <p>Component JSPs should contain only the HTML markup and JSTL tags necessary to render the component and it’s view permutations, rather than Java “scriptlet” blocks containing business logic. To facilitate the separation of controller logic from presentation, Bedrock provides a custom JSP tag to associate a Java class (or “backing bean”) to a component JSP. The library also provides an abstract component class containing accessors and convenience methods for objects that are typically available in the JSP page context (e.g. current page, current node, Sling resource resolver, etc.). Decorated instances for the current page and component node implement common use cases to reduce boilerplate code and encourage the use of established conventions. This allows the developer to focus on project-specific concerns rather than reimplementing functionality that is frequently required for a typical AEM implementation but may not be provided by the AEM APIs.</p>
+ </div> 
+ <div class="section"> 
+  <h3 id="Usage">Usage</h3> 
+  <p>The component JSP needs to include the Bedrock <tt>global.jsp</tt> to define the tag namespace and ensure that required variables are set in the page context.</p> 
+  <p>Component Java classes can be instantiated in one of two ways:</p> 
+  <ul> 
+   <li>Include the <tt>&lt;bedrock:component/&gt;</tt> tag in the JSP as shown below.</li> 
+   <li>Define a <tt>className</tt> attribute in the <tt>.content.xml</tt> descriptor file for the component and annotate the Java class with the <tt>com.citytechinc.aem.bedrock.api.components.annotations.AutoInstantiate</tt> annotation.</li> 
+  </ul> 
+  <p>In the latter case, the <tt>global.jsp</tt> will instantiate the component class via the <tt>&lt;bedrock:defineObjects/&gt;</tt> tag included therein.</p> 
+  <div class="source"> 
+   <pre>&lt;%@include file=&quot;/apps/bedrock/components/global.jsp&quot;%&gt;
+
+&lt;bedrock:component className=&quot;com.projectname.components.content.Navigation&quot; name=&quot;navigation&quot;/&gt;
+
+&lt;h1&gt;${navigation.title}&lt;/h1&gt;
+
+&lt;ul&gt;
+    &lt;c:forEach items=&quot;${navigation.pages}&quot; var=&quot;page&quot;&gt;
+        &lt;li&gt;&lt;a href=&quot;${page.href}&quot;&gt;${page.title}&lt;/a&gt;&lt;/li&gt;
+    &lt;/c:forEach&gt;
+&lt;/ul&gt;
+</pre>
+  </div> 
+  <p>The backing Java class for the component should expose getters for the values that required to render the component’s view.</p> 
+  <div class="source"> 
+   <pre>package com.projectname.components.content;
+
+import com.citytechinc.aem.bedrock.core.components.AbstractComponent;
+import com.citytechinc.aem.bedrock.api.content.page.PageDecorator;
+
+import java.util.List;
+
+@Model(adaptables=[Resource,SlingHttpServletRequest],
+    defaultInjectionStrategy=DefaultInjectionStrategy.OPTIONAL)
+public final class Navigation extends AbstractComponent {
+
+    public String getTitle() {
+        return get(&quot;title&quot;, &quot;&quot;);
+    }
+
+    public List&lt;PageDecorator&gt; getPages() {
+        return getCurrentPage().getChildren(true);
+    }
+}
+</pre>
+  </div>
+ </div> 
+ <div class="section"> 
+  <h3 id="Abstract_Component_Java_Class">Abstract Component Java Class</h3> 
+  <p>The <tt>AbstractComponent</tt> class should be extended by all component backing classes. In addition to the numerous getters for retrieving and transforming properties on the current component node, the base class also exposes <tt>getComponent</tt> methods to acquire instances of other components from either an absolute path or a <tt>ComponentNode</tt>.</p> 
+  <div class="source"> 
+   <pre>final PageDecorator homepage = request.getPageManager().getPage(&quot;/content/home&quot;);
+
+// get the component node for the Homepage Latest News component
+final Optional&lt;ComponentNode&gt; latestNewsComponentNode = homepage.getComponentNode(&quot;latestnews&quot;);
+
+if (latestNewsComponentNode.isPresent()) {
+    // get an instance of the Latest News component for the given component node
+    final LatestNews latestNews = getComponent(latestNewsComponentNode.get(), LatestNews.class).get();
+}
+</pre>
+  </div> 
+  <p>See the <a class="externalLink" href="http://code.citytechinc.com/bedrock/apidocs/com/citytechinc/aem/bedrock/core/components/AbstractComponent.html">Javadoc</a> for details of the available methods.</p>
+ </div> 
+ <div class="section"> 
+  <h3 id="Sightly_Support">Sightly Support</h3> 
+  <p>Components extending the <tt>AbstractComponent</tt> class can be used interchangeably with both Sightly templates and JSPs.</p> 
+  <div class="source"> 
+   <pre>&lt;div data-sly-use.navigation=&quot;com.projectname.components.content.Navigation&quot;&gt;
+    &lt;h1&gt;${navigation.title}&lt;/h1&gt;
+&lt;/div&gt;
+</pre>
+  </div>
+ </div> 
+ <div class="section"> 
+  <h3 id="Development_Guidelines">Development Guidelines</h3> 
+  <ul> 
+   <li>Component beans should be <b>read-only</b>; since components are generally accessed by an anonymous user in publish mode. Repository write operations should be performed only in author mode (and replicated only when a page is activated by a content author). Since component classes are executed in both author and publish modes, ideally one should consider alternative approaches to performing write operations in a component bean: 
+    <ul> 
+     <li>Delegate write operations to an OSGi service that is bound to an administrative session.</li> 
+     <li>Refactor the component to perform dialog-based content modifications by attaching a listener to the appropriate <a class="externalLink" href="http://dev.day.com/content/docs/en/cq/current/widgets-api/index.html?class=CQ.Dialog">dialog event</a>, e.g. ‘beforesubmit’.</li> 
+     <li>Register a <a class="externalLink" href="http://www.day.com/maven/jsr170/javadocs/jcr-2.0/javax/jcr/observation/ObservationManager.html">JCR event listener</a> to trigger event-based repository updates.</li> 
+    </ul></li> 
+   <li>Classes should remain stateless and contain no setters. Since the lifecycle of a component is bound to a request, state should be maintained client-side using cookies, HTML5 web storage, or DOM data attributes.</li> 
+  </ul>
+ </div>
+</div>
+			</div>
+		</div>
+	</div>
+	</div>
+
+	</div><!-- /container -->
+	
+	<!-- Footer
+	================================================== -->
+	<footer class="well">
+		<div class="container">
+			<div class="row">
+				<div class="span4 bottom-nav">
+					<ul class="nav nav-list">
+						<li class="nav-header">User Guide</li>
+						<li>
+							<a href="adapters.html" title="Adapters">Adapters </a>
+						</li>
+						<li class="active">
+							<a href="#" title="Component Framework">Component Framework </a>
+						</li>
+						<li>
+							<a href="constants.html" title="Constants">Constants </a>
+						</li>
+						<li>
+							<a href="image-rendering.html" title="Image Rendering">Image Rendering </a>
+						</li>
+						<li>
+							<a href="including-in-aem-projects.html" title="Including in AEM Projects">Including in AEM Projects </a>
+						</li>
+						<li>
+							<a href="javascript.html" title="JavaScript">JavaScript </a>
+						</li>
+						<li>
+							<a href="links.html" title="Links">Links </a>
+						</li>
+						<li>
+							<a href="optionals.html" title="Optionals">Optionals </a>
+						</li>
+						<li>
+							<a href="predicates.html" title="Predicates">Predicates </a>
+						</li>
+						<li>
+							<a href="services.html" title="Services">Services </a>
+						</li>
+						<li>
+							<a href="servlets.html" title="Servlets">Servlets </a>
+						</li>
+						<li>
+							<a href="injectors.html" title="Sling Models Injectors">Sling Models Injectors </a>
+						</li>
+						<li>
+							<a href="tag-library.html" title="Tag Library">Tag Library </a>
+						</li>
+					</ul>
+				</div>
+				<div class="span5 bottom-nav">
+					<ul class="nav nav-list">
+						<li class="nav-header">Project Documentation</li>
+						<li>
+							<a href="project-info.html" title="Project Information">Project Information <i class="icon-chevron-right"></i></a>
+						</li>
+						<li>
+							<a href="project-reports.html" title="Project Reports">Project Reports <i class="icon-chevron-right"></i></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</footer>
+		
+	<div class="container subfooter">
+		<div class="row">
+			<div class="span12">
+				<p class="pull-right"><a href="#">Back to top</a></p>
+				<p class="copyright">Copyright &copy;2015 <a href="http://www.citytechinc.com">CITYTECH, Inc.</a>. All Rights Reserved.</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- Le javascript
+	================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+
+	<!-- Fallback jQuery loading from Google CDN:
+	     http://stackoverflow.com/questions/1014203/best-way-to-use-googles-hosted-jquery-but-fall-back-to-my-hosted-library-on-go -->
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script type="text/javascript">
+		if (typeof jQuery == 'undefined')
+		{
+			document.write(unescape("%3Cscript src='./js/jquery-1.8.3.min.js' type='text/javascript'%3E%3C/script%3E"));
+		}
+	</script>
+	
+	<script src="./js/bootstrap.min.js"></script>
+	<script src="./js/lightbox.js"></script>
+	<script src="./js/jquery.smooth-scroll.min.js"></script>
+	<!-- back button support for smooth scroll -->
+	<script src="./js/jquery.ba-bbq.min.js"></script>
+	<script src="http://yandex.st/highlightjs/7.3/highlight.min.js"></script>
+
+	<script src="./js/reflow-skin.js"></script>
+	
+	</body>
+</html>

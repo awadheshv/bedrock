@@ -1,0 +1,4176 @@
+
+<!DOCTYPE html>
+<html  xml:lang="en" lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<title>Surefire Report | Bedrock</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content="" />
+		<meta http-equiv="content-language" content="en" />
+		
+		<link href="./css/bootstrap.min.css" rel="stylesheet" />
+		<link href="./css/bootstrap-responsive.min.css" rel="stylesheet" />
+		<link href="./css/docs.css" rel="stylesheet" />
+		<link href="./css/reflow-skin.css" rel="stylesheet" />
+		
+		<link href="http://yandex.st/highlightjs/7.3/styles/github.min.css" rel="stylesheet" />
+		
+		<link href="./css/lightbox.css" rel="stylesheet" />
+		
+		<link href="./css/site.css" rel="stylesheet" />
+		<link href="./css/print.css" rel="stylesheet" media="print" />
+		
+		<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+		<!--[if lt IE 9]>
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+
+	</head>
+
+	<body class="page-surefire-report project-bedrock" data-spy="scroll" data-offset="60" data-target="#toc-scroll-target">
+
+		<div class="navbar navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container">
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</a>
+					<a class="brand" href="./">Bedrock</a>
+					<div class="nav-collapse">
+						<ul class="nav pull-right">
+							<li><a href="https://github.com/Citytechinc/bedrock" title="GitHub" class="externalLink">GitHub </a></li>
+							<li><a href="index.html" title="Overview">Overview </a></li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">User Guide <b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><a href="adapters.html" title="Adapters">Adapters </a></li>
+									<li><a href="component-framework.html" title="Component Framework">Component Framework </a></li>
+									<li><a href="constants.html" title="Constants">Constants </a></li>
+									<li><a href="image-rendering.html" title="Image Rendering">Image Rendering </a></li>
+									<li><a href="including-in-aem-projects.html" title="Including in AEM Projects">Including in AEM Projects </a></li>
+									<li><a href="javascript.html" title="JavaScript">JavaScript </a></li>
+									<li><a href="links.html" title="Links">Links </a></li>
+									<li><a href="optionals.html" title="Optionals">Optionals </a></li>
+									<li><a href="predicates.html" title="Predicates">Predicates </a></li>
+									<li><a href="services.html" title="Services">Services </a></li>
+									<li><a href="servlets.html" title="Servlets">Servlets </a></li>
+									<li><a href="injectors.html" title="Sling Models Injectors">Sling Models Injectors </a></li>
+									<li><a href="tag-library.html" title="Tag Library">Tag Library </a></li>
+								</ul>
+							</li>
+							<li class="dropdown active">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Project Documentation <b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li class="dropdown-submenu">
+										<a href="project-info.html" title="Project Information">Project Information </a>
+										<ul class="dropdown-menu">
+											<li><a href="project-summary.html" title="Project Summary">Project Summary </a></li>
+											<li><a href="license.html" title="Project License">Project License </a></li>
+										</ul>
+									</li>
+									<li class="dropdown-submenu">
+										<a href="project-reports.html" title="Project Reports">Project Reports </a>
+										<ul class="dropdown-menu">
+											<li><a href="apidocs/index.html" title="JavaDocs">JavaDocs </a></li>
+											<li class="active"><a href="" title="Surefire Report">Surefire Report </a></li>
+											<li><a href="pmd.html" title="PMD">PMD </a></li>
+											<li><a href="cobertura/index.html" title="Cobertura Test Coverage">Cobertura Test Coverage </a></li>
+											<li><a href="github-report.html" title="GitHub Report">GitHub Report </a></li>
+											<li><a href="jsdoc/index.html" title="JsDocs">JsDocs </a></li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div><!--/.nav-collapse -->
+				</div>
+			</div>
+		</div>
+		
+	<div class="container">
+	
+	<!-- Masthead
+	================================================== -->
+
+	
+	
+	<header class="jumbotron subhead">
+		<div class="row" id="banner">
+			<div class="span12">
+				<div class="pull-left">
+					<a href="http://www.citytechinc.com" id="bannerLeft"><img src="images/logo.png" alt="CITYTECH, Inc."></a>
+				</div>
+				<div class="pull-right">
+										<a href="./" id="bannerRight"><h1>Bedrock</h1></a>
+					<p class="lead"></p>
+				</div>
+			</div>
+		</div>
+
+
+	
+		</header>
+
+	<div class="main-body">
+	<div class="row">
+		<div class="span12">
+			<div class="body-content">
+<script type="text/javascript">
+//<![CDATA[
+function toggleDisplay(elementId) {
+ var elm = document.getElementById(elementId + 'error');
+ if (elm && typeof elm.style != "undefined") {
+ if (elm.style.display == "none") {
+ elm.style.display = "";
+ document.getElementById(elementId + 'off').style.display = "none";
+ document.getElementById(elementId + 'on').style.display = "inline";
+ } else if (elm.style.display == "") { elm.style.display = "none";
+ document.getElementById(elementId + 'off').style.display = "inline";
+ document.getElementById(elementId + 'on').style.display = "none";
+ } 
+ } 
+ }
+//]]>
+</script> 
+<div class="section"> 
+ <h2 id="Surefire_Report">Surefire Report</h2> 
+</div> 
+<div class="section"> 
+ <h2 id="Summary">Summary</h2> 
+ <a name="Summary"></a> 
+ <p>[<a href="#Summary">Summary</a>] [<a href="#Package_List">Package List</a>] [<a href="#Test_Cases">Test Cases</a>]</p> 
+ <br /> 
+ <table border="1" class="bodyTable table table-striped table-hover"> 
+  <thead> 
+   <tr class="a"> 
+    <th>Tests</th> 
+    <th>Errors </th> 
+    <th>Failures</th> 
+    <th>Skipped</th> 
+    <th>Success Rate</th> 
+    <th>Time</th> 
+   </tr> 
+  </thead> 
+  <tbody> 
+   <tr class="b"> 
+    <td>475</td> 
+    <td>0</td> 
+    <td>0</td> 
+    <td>1</td> 
+    <td>99.789%</td> 
+    <td>4.362</td> 
+   </tr> 
+  </tbody> 
+ </table> 
+ <br /> 
+ <p>Note: failures are anticipated and checked for with assertions while errors are unanticipated.</p> 
+ <br /> 
+</div> 
+<div class="section"> 
+ <h2 id="Package_List">Package List</h2> 
+ <a name="Package_List"></a> 
+ <p>[<a href="#Summary">Summary</a>] [<a href="#Package_List">Package List</a>] [<a href="#Test_Cases">Test Cases</a>]</p> 
+ <br /> 
+ <table border="1" class="bodyTable table table-striped table-hover"> 
+  <thead> 
+   <tr class="a"> 
+    <th>Package</th> 
+    <th>Tests</th> 
+    <th>Errors </th> 
+    <th>Failures</th> 
+    <th>Skipped</th> 
+    <th>Success Rate</th> 
+    <th>Time</th> 
+   </tr> 
+  </thead> 
+  <tbody> 
+   <tr class="b"> 
+    <td><a href="#com.citytechinc.aem.bedrock.core.node">com.citytechinc.aem.bedrock.core.node</a></td> 
+    <td>1</td> 
+    <td>0</td> 
+    <td>0</td> 
+    <td>0</td> 
+    <td>100%</td> 
+    <td>0.026</td> 
+   </tr> 
+   <tr class="a"> 
+    <td><a href="#com.citytechinc.aem.bedrock.core.services">com.citytechinc.aem.bedrock.core.services</a></td> 
+    <td>19</td> 
+    <td>0</td> 
+    <td>0</td> 
+    <td>0</td> 
+    <td>100%</td> 
+    <td>0.004</td> 
+   </tr> 
+   <tr class="b"> 
+    <td><a href="#com.citytechinc.aem.bedrock.core.services.impl">com.citytechinc.aem.bedrock.core.services.impl</a></td> 
+    <td>2</td> 
+    <td>0</td> 
+    <td>0</td> 
+    <td>0</td> 
+    <td>100%</td> 
+    <td>0.019</td> 
+   </tr> 
+   <tr class="a"> 
+    <td><a href="#com.citytechinc.aem.bedrock.core.link.enums">com.citytechinc.aem.bedrock.core.link.enums</a></td> 
+    <td>6</td> 
+    <td>0</td> 
+    <td>0</td> 
+    <td>0</td> 
+    <td>100%</td> 
+    <td>0.004</td> 
+   </tr> 
+   <tr class="b"> 
+    <td><a href="#com.citytechinc.aem.bedrock.core.listeners">com.citytechinc.aem.bedrock.core.listeners</a></td> 
+    <td>1</td> 
+    <td>0</td> 
+    <td>0</td> 
+    <td>0</td> 
+    <td>100%</td> 
+    <td>0.019</td> 
+   </tr> 
+   <tr class="a"> 
+    <td><a href="#com.citytechinc.aem.bedrock.core.node.impl">com.citytechinc.aem.bedrock.core.node.impl</a></td> 
+    <td>151</td> 
+    <td>0</td> 
+    <td>0</td> 
+    <td>0</td> 
+    <td>100%</td> 
+    <td>1.125</td> 
+   </tr> 
+   <tr class="b"> 
+    <td><a href="#com.citytechinc.aem.bedrock.core.components">com.citytechinc.aem.bedrock.core.components</a></td> 
+    <td>1</td> 
+    <td>0</td> 
+    <td>0</td> 
+    <td>1</td> 
+    <td>0%</td> 
+    <td>0</td> 
+   </tr> 
+   <tr class="a"> 
+    <td><a href="#com.citytechinc.aem.bedrock.core.link.impl">com.citytechinc.aem.bedrock.core.link.impl</a></td> 
+    <td>1</td> 
+    <td>0</td> 
+    <td>0</td> 
+    <td>0</td> 
+    <td>100%</td> 
+    <td>0</td> 
+   </tr> 
+   <tr class="b"> 
+    <td><a href="#com.citytechinc.aem.bedrock.core.replication">com.citytechinc.aem.bedrock.core.replication</a></td> 
+    <td>4</td> 
+    <td>0</td> 
+    <td>0</td> 
+    <td>0</td> 
+    <td>100%</td> 
+    <td>0.044</td> 
+   </tr> 
+   <tr class="a"> 
+    <td><a href="#com.citytechinc.aem.bedrock.core.servlets.replication">com.citytechinc.aem.bedrock.core.servlets.replication</a></td> 
+    <td>6</td> 
+    <td>0</td> 
+    <td>0</td> 
+    <td>0</td> 
+    <td>100%</td> 
+    <td>0.022</td> 
+   </tr> 
+   <tr class="b"> 
+    <td><a href="#com.citytechinc.aem.bedrock.core.node.predicates">com.citytechinc.aem.bedrock.core.node.predicates</a></td> 
+    <td>13</td> 
+    <td>0</td> 
+    <td>0</td> 
+    <td>0</td> 
+    <td>100%</td> 
+    <td>0.038</td> 
+   </tr> 
+   <tr class="a"> 
+    <td><a href="#com.citytechinc.aem.bedrock.core.adapter">com.citytechinc.aem.bedrock.core.adapter</a></td> 
+    <td>8</td> 
+    <td>0</td> 
+    <td>0</td> 
+    <td>0</td> 
+    <td>100%</td> 
+    <td>0.121</td> 
+   </tr> 
+   <tr class="b"> 
+    <td><a href="#com.citytechinc.aem.bedrock.core.link.builders.impl">com.citytechinc.aem.bedrock.core.link.builders.impl</a></td> 
+    <td>36</td> 
+    <td>0</td> 
+    <td>0</td> 
+    <td>0</td> 
+    <td>100%</td> 
+    <td>0.384</td> 
+   </tr> 
+   <tr class="a"> 
+    <td><a href="#com.citytechinc.aem.bedrock.core.page.predicates">com.citytechinc.aem.bedrock.core.page.predicates</a></td> 
+    <td>3</td> 
+    <td>0</td> 
+    <td>0</td> 
+    <td>0</td> 
+    <td>100%</td> 
+    <td>0.003</td> 
+   </tr> 
+   <tr class="b"> 
+    <td><a href="#com.citytechinc.aem.bedrock.core.tags">com.citytechinc.aem.bedrock.core.tags</a></td> 
+    <td>29</td> 
+    <td>0</td> 
+    <td>0</td> 
+    <td>0</td> 
+    <td>100%</td> 
+    <td>0.314</td> 
+   </tr> 
+   <tr class="a"> 
+    <td><a href="#com.citytechinc.aem.bedrock.models.impl">com.citytechinc.aem.bedrock.models.impl</a></td> 
+    <td>35</td> 
+    <td>0</td> 
+    <td>0</td> 
+    <td>0</td> 
+    <td>100%</td> 
+    <td>1.021</td> 
+   </tr> 
+   <tr class="b"> 
+    <td><a href="#com.citytechinc.aem.bedrock.core.page.impl">com.citytechinc.aem.bedrock.core.page.impl</a></td> 
+    <td>85</td> 
+    <td>0</td> 
+    <td>0</td> 
+    <td>0</td> 
+    <td>100%</td> 
+    <td>0.404</td> 
+   </tr> 
+   <tr class="a"> 
+    <td><a href="#com.citytechinc.aem.bedrock.core.services.cache">com.citytechinc.aem.bedrock.core.services.cache</a></td> 
+    <td>10</td> 
+    <td>0</td> 
+    <td>0</td> 
+    <td>0</td> 
+    <td>100%</td> 
+    <td>0.044</td> 
+   </tr> 
+   <tr class="b"> 
+    <td><a href="#com.citytechinc.aem.bedrock.core.servlets.optionsprovider">com.citytechinc.aem.bedrock.core.servlets.optionsprovider</a></td> 
+    <td>5</td> 
+    <td>0</td> 
+    <td>0</td> 
+    <td>0</td> 
+    <td>100%</td> 
+    <td>0.044</td> 
+   </tr> 
+   <tr class="a"> 
+    <td><a href="#com.citytechinc.aem.bedrock.core.utils">com.citytechinc.aem.bedrock.core.utils</a></td> 
+    <td>25</td> 
+    <td>0</td> 
+    <td>0</td> 
+    <td>0</td> 
+    <td>100%</td> 
+    <td>0.016</td> 
+   </tr> 
+   <tr class="b"> 
+    <td><a href="#com.citytechinc.aem.bedrock.core.servlets">com.citytechinc.aem.bedrock.core.servlets</a></td> 
+    <td>17</td> 
+    <td>0</td> 
+    <td>0</td> 
+    <td>0</td> 
+    <td>100%</td> 
+    <td>0.58</td> 
+   </tr> 
+   <tr class="a"> 
+    <td><a href="#com.citytechinc.aem.bedrock.core.request.impl">com.citytechinc.aem.bedrock.core.request.impl</a></td> 
+    <td>17</td> 
+    <td>0</td> 
+    <td>0</td> 
+    <td>0</td> 
+    <td>100%</td> 
+    <td>0.13</td> 
+   </tr> 
+  </tbody> 
+ </table> 
+ <br /> 
+ <p>Note: package statistics are not computed recursively, they only sum up all of its testsuites numbers.</p> 
+ <div class="section"> 
+  <h3 id="com.citytechinc.aem.bedrock.core.node">com.citytechinc.aem.bedrock.core.node</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.node"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <thead> 
+    <tr class="a"> 
+     <th></th> 
+     <th>Class</th> 
+     <th>Tests</th> 
+     <th>Errors </th> 
+     <th>Failures</th> 
+     <th>Skipped</th> 
+     <th>Success Rate</th> 
+     <th>Time</th> 
+    </tr> 
+   </thead> 
+   <tbody> 
+    <tr class="b"> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.nodeDelegateComponentNodeSpec"><i class="icon-ok"></i></a></td> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.nodeDelegateComponentNodeSpec">DelegateComponentNodeSpec</a></td> 
+     <td>1</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>100%</td> 
+     <td>0.026</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="com.citytechinc.aem.bedrock.core.services">com.citytechinc.aem.bedrock.core.services</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.services"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <thead> 
+    <tr class="a"> 
+     <th></th> 
+     <th>Class</th> 
+     <th>Tests</th> 
+     <th>Errors </th> 
+     <th>Failures</th> 
+     <th>Skipped</th> 
+     <th>Success Rate</th> 
+     <th>Time</th> 
+    </tr> 
+   </thead> 
+   <tbody> 
+    <tr class="b"> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.servicesOsgiConfigurationSpec"><i class="icon-ok"></i></a></td> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.servicesOsgiConfigurationSpec">OsgiConfigurationSpec</a></td> 
+     <td>19</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>100%</td> 
+     <td>0.004</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="com.citytechinc.aem.bedrock.core.services.impl">com.citytechinc.aem.bedrock.core.services.impl</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.services.impl"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <thead> 
+    <tr class="a"> 
+     <th></th> 
+     <th>Class</th> 
+     <th>Tests</th> 
+     <th>Errors </th> 
+     <th>Failures</th> 
+     <th>Skipped</th> 
+     <th>Success Rate</th> 
+     <th>Time</th> 
+    </tr> 
+   </thead> 
+   <tbody> 
+    <tr class="b"> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.services.implDefaultSelectiveReplicationServiceSpec"><i class="icon-ok"></i></a></td> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.services.implDefaultSelectiveReplicationServiceSpec">DefaultSelectiveReplicationServiceSpec</a></td> 
+     <td>2</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>100%</td> 
+     <td>0.019</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="com.citytechinc.aem.bedrock.core.link.enums">com.citytechinc.aem.bedrock.core.link.enums</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.link.enums"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <thead> 
+    <tr class="a"> 
+     <th></th> 
+     <th>Class</th> 
+     <th>Tests</th> 
+     <th>Errors </th> 
+     <th>Failures</th> 
+     <th>Skipped</th> 
+     <th>Success Rate</th> 
+     <th>Time</th> 
+    </tr> 
+   </thead> 
+   <tbody> 
+    <tr class="b"> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.link.enumsLinkTargetSpec"><i class="icon-ok"></i></a></td> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.link.enumsLinkTargetSpec">LinkTargetSpec</a></td> 
+     <td>6</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>100%</td> 
+     <td>0.004</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="com.citytechinc.aem.bedrock.core.listeners">com.citytechinc.aem.bedrock.core.listeners</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.listeners"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <thead> 
+    <tr class="a"> 
+     <th></th> 
+     <th>Class</th> 
+     <th>Tests</th> 
+     <th>Errors </th> 
+     <th>Failures</th> 
+     <th>Skipped</th> 
+     <th>Success Rate</th> 
+     <th>Time</th> 
+    </tr> 
+   </thead> 
+   <tbody> 
+    <tr class="b"> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.listenersAbstractPageEventListenerSpec"><i class="icon-ok"></i></a></td> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.listenersAbstractPageEventListenerSpec">AbstractPageEventListenerSpec</a></td> 
+     <td>1</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>100%</td> 
+     <td>0.019</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="com.citytechinc.aem.bedrock.core.node.impl">com.citytechinc.aem.bedrock.core.node.impl</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.node.impl"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <thead> 
+    <tr class="a"> 
+     <th></th> 
+     <th>Class</th> 
+     <th>Tests</th> 
+     <th>Errors </th> 
+     <th>Failures</th> 
+     <th>Skipped</th> 
+     <th>Success Rate</th> 
+     <th>Time</th> 
+    </tr> 
+   </thead> 
+   <tbody> 
+    <tr class="b"> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.node.implDefaultBasicNodeSpec"><i class="icon-ok"></i></a></td> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.node.implDefaultBasicNodeSpec">DefaultBasicNodeSpec</a></td> 
+     <td>82</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>100%</td> 
+     <td>0.359</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.node.implDefaultComponentNodeSpec"><i class="icon-ok"></i></a></td> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.node.implDefaultComponentNodeSpec">DefaultComponentNodeSpec</a></td> 
+     <td>69</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>100%</td> 
+     <td>0.766</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="com.citytechinc.aem.bedrock.core.components">com.citytechinc.aem.bedrock.core.components</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.components"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <thead> 
+    <tr class="a"> 
+     <th></th> 
+     <th>Class</th> 
+     <th>Tests</th> 
+     <th>Errors </th> 
+     <th>Failures</th> 
+     <th>Skipped</th> 
+     <th>Success Rate</th> 
+     <th>Time</th> 
+    </tr> 
+   </thead> 
+   <tbody> 
+    <tr class="b"> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.componentsComponentSpec"><i class="icon-warning-sign"></i></a></td> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.componentsComponentSpec">ComponentSpec</a></td> 
+     <td>1</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>1</td> 
+     <td>0%</td> 
+     <td>0</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="com.citytechinc.aem.bedrock.core.link.impl">com.citytechinc.aem.bedrock.core.link.impl</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.link.impl"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <thead> 
+    <tr class="a"> 
+     <th></th> 
+     <th>Class</th> 
+     <th>Tests</th> 
+     <th>Errors </th> 
+     <th>Failures</th> 
+     <th>Skipped</th> 
+     <th>Success Rate</th> 
+     <th>Time</th> 
+    </tr> 
+   </thead> 
+   <tbody> 
+    <tr class="b"> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.link.implDefaultLinkSpec"><i class="icon-ok"></i></a></td> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.link.implDefaultLinkSpec">DefaultLinkSpec</a></td> 
+     <td>1</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>100%</td> 
+     <td>0</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="com.citytechinc.aem.bedrock.core.replication">com.citytechinc.aem.bedrock.core.replication</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.replication"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <thead> 
+    <tr class="a"> 
+     <th></th> 
+     <th>Class</th> 
+     <th>Tests</th> 
+     <th>Errors </th> 
+     <th>Failures</th> 
+     <th>Skipped</th> 
+     <th>Success Rate</th> 
+     <th>Time</th> 
+    </tr> 
+   </thead> 
+   <tbody> 
+    <tr class="b"> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.replicationPageReplicationListenerSpec"><i class="icon-ok"></i></a></td> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.replicationPageReplicationListenerSpec">PageReplicationListenerSpec</a></td> 
+     <td>4</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>100%</td> 
+     <td>0.044</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="com.citytechinc.aem.bedrock.core.servlets.replication">com.citytechinc.aem.bedrock.core.servlets.replication</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.servlets.replication"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <thead> 
+    <tr class="a"> 
+     <th></th> 
+     <th>Class</th> 
+     <th>Tests</th> 
+     <th>Errors </th> 
+     <th>Failures</th> 
+     <th>Skipped</th> 
+     <th>Success Rate</th> 
+     <th>Time</th> 
+    </tr> 
+   </thead> 
+   <tbody> 
+    <tr class="b"> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.servlets.replicationSelectiveReplicationServletSpec"><i class="icon-ok"></i></a></td> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.servlets.replicationSelectiveReplicationServletSpec">SelectiveReplicationServletSpec</a></td> 
+     <td>6</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>100%</td> 
+     <td>0.022</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="com.citytechinc.aem.bedrock.core.node.predicates">com.citytechinc.aem.bedrock.core.node.predicates</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.node.predicates"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <thead> 
+    <tr class="a"> 
+     <th></th> 
+     <th>Class</th> 
+     <th>Tests</th> 
+     <th>Errors </th> 
+     <th>Failures</th> 
+     <th>Skipped</th> 
+     <th>Success Rate</th> 
+     <th>Time</th> 
+    </tr> 
+   </thead> 
+   <tbody> 
+    <tr class="b"> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.node.predicatesComponentNodePropertyExistsPredicateSpec"><i class="icon-ok"></i></a></td> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.node.predicatesComponentNodePropertyExistsPredicateSpec">ComponentNodePropertyExistsPredicateSpec</a></td> 
+     <td>4</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>100%</td> 
+     <td>0.027</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.node.predicatesComponentNodeResourceTypePredicateSpec"><i class="icon-ok"></i></a></td> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.node.predicatesComponentNodeResourceTypePredicateSpec">ComponentNodeResourceTypePredicateSpec</a></td> 
+     <td>4</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>100%</td> 
+     <td>0.003</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.node.predicatesPropertyNamePredicateSpec"><i class="icon-ok"></i></a></td> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.node.predicatesPropertyNamePredicateSpec">PropertyNamePredicateSpec</a></td> 
+     <td>3</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>100%</td> 
+     <td>0.007</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.node.predicatesResourceTypePredicateSpec"><i class="icon-ok"></i></a></td> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.node.predicatesResourceTypePredicateSpec">ResourceTypePredicateSpec</a></td> 
+     <td>2</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>100%</td> 
+     <td>0.001</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="com.citytechinc.aem.bedrock.core.adapter">com.citytechinc.aem.bedrock.core.adapter</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.adapter"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <thead> 
+    <tr class="a"> 
+     <th></th> 
+     <th>Class</th> 
+     <th>Tests</th> 
+     <th>Errors </th> 
+     <th>Failures</th> 
+     <th>Skipped</th> 
+     <th>Success Rate</th> 
+     <th>Time</th> 
+    </tr> 
+   </thead> 
+   <tbody> 
+    <tr class="b"> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.adapterBedrockAdapterFactorySpec"><i class="icon-ok"></i></a></td> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.adapterBedrockAdapterFactorySpec">BedrockAdapterFactorySpec</a></td> 
+     <td>8</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>100%</td> 
+     <td>0.121</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="com.citytechinc.aem.bedrock.core.link.builders.impl">com.citytechinc.aem.bedrock.core.link.builders.impl</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.link.builders.impl"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <thead> 
+    <tr class="a"> 
+     <th></th> 
+     <th>Class</th> 
+     <th>Tests</th> 
+     <th>Errors </th> 
+     <th>Failures</th> 
+     <th>Skipped</th> 
+     <th>Success Rate</th> 
+     <th>Time</th> 
+    </tr> 
+   </thead> 
+   <tbody> 
+    <tr class="b"> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.link.builders.implDefaultLinkBuilderSpec"><i class="icon-ok"></i></a></td> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.link.builders.implDefaultLinkBuilderSpec">DefaultLinkBuilderSpec</a></td> 
+     <td>36</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>100%</td> 
+     <td>0.384</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="com.citytechinc.aem.bedrock.core.page.predicates">com.citytechinc.aem.bedrock.core.page.predicates</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.page.predicates"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <thead> 
+    <tr class="a"> 
+     <th></th> 
+     <th>Class</th> 
+     <th>Tests</th> 
+     <th>Errors </th> 
+     <th>Failures</th> 
+     <th>Skipped</th> 
+     <th>Success Rate</th> 
+     <th>Time</th> 
+    </tr> 
+   </thead> 
+   <tbody> 
+    <tr class="b"> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.page.predicatesTemplatePredicateSpec"><i class="icon-ok"></i></a></td> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.page.predicatesTemplatePredicateSpec">TemplatePredicateSpec</a></td> 
+     <td>3</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>100%</td> 
+     <td>0.003</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="com.citytechinc.aem.bedrock.core.tags">com.citytechinc.aem.bedrock.core.tags</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.tags"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <thead> 
+    <tr class="a"> 
+     <th></th> 
+     <th>Class</th> 
+     <th>Tests</th> 
+     <th>Errors </th> 
+     <th>Failures</th> 
+     <th>Skipped</th> 
+     <th>Success Rate</th> 
+     <th>Time</th> 
+    </tr> 
+   </thead> 
+   <tbody> 
+    <tr class="b"> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.tagsComponentTagSpec"><i class="icon-ok"></i></a></td> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.tagsComponentTagSpec">ComponentTagSpec</a></td> 
+     <td>5</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>100%</td> 
+     <td>0.097</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.tagsDescriptionTagSpec"><i class="icon-ok"></i></a></td> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.tagsDescriptionTagSpec">DescriptionTagSpec</a></td> 
+     <td>5</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>100%</td> 
+     <td>0.057</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.tagsFavIconTagSpec"><i class="icon-ok"></i></a></td> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.tagsFavIconTagSpec">FavIconTagSpec</a></td> 
+     <td>2</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>100%</td> 
+     <td>0.068</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.tagsHrefTagSpec"><i class="icon-ok"></i></a></td> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.tagsHrefTagSpec">HrefTagSpec</a></td> 
+     <td>5</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>100%</td> 
+     <td>0.037</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.tagsScopedTagSpec"><i class="icon-ok"></i></a></td> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.tagsScopedTagSpec">ScopedTagSpec</a></td> 
+     <td>5</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>100%</td> 
+     <td>0.018</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.tagsTitleTagSpec"><i class="icon-ok"></i></a></td> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.tagsTitleTagSpec">TitleTagSpec</a></td> 
+     <td>7</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>100%</td> 
+     <td>0.037</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="com.citytechinc.aem.bedrock.models.impl">com.citytechinc.aem.bedrock.models.impl</h3> 
+  <a name="com.citytechinc.aem.bedrock.models.impl"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <thead> 
+    <tr class="a"> 
+     <th></th> 
+     <th>Class</th> 
+     <th>Tests</th> 
+     <th>Errors </th> 
+     <th>Failures</th> 
+     <th>Skipped</th> 
+     <th>Success Rate</th> 
+     <th>Time</th> 
+    </tr> 
+   </thead> 
+   <tbody> 
+    <tr class="b"> 
+     <td><a href="#com.citytechinc.aem.bedrock.models.implAdaptableInjectorSpec"><i class="icon-ok"></i></a></td> 
+     <td><a href="#com.citytechinc.aem.bedrock.models.implAdaptableInjectorSpec">AdaptableInjectorSpec</a></td> 
+     <td>2</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>100%</td> 
+     <td>0.098</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><a href="#com.citytechinc.aem.bedrock.models.implComponentInjectorSpec"><i class="icon-ok"></i></a></td> 
+     <td><a href="#com.citytechinc.aem.bedrock.models.implComponentInjectorSpec">ComponentInjectorSpec</a></td> 
+     <td>10</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>100%</td> 
+     <td>0.136</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><a href="#com.citytechinc.aem.bedrock.models.implEnumInjectorSpec"><i class="icon-ok"></i></a></td> 
+     <td><a href="#com.citytechinc.aem.bedrock.models.implEnumInjectorSpec">EnumInjectorSpec</a></td> 
+     <td>2</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>100%</td> 
+     <td>0.065</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><a href="#com.citytechinc.aem.bedrock.models.implInheritInjectorSpec"><i class="icon-ok"></i></a></td> 
+     <td><a href="#com.citytechinc.aem.bedrock.models.implInheritInjectorSpec">InheritInjectorSpec</a></td> 
+     <td>1</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>100%</td> 
+     <td>0.027</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><a href="#com.citytechinc.aem.bedrock.models.implInjectorIntegrationSpec"><i class="icon-ok"></i></a></td> 
+     <td><a href="#com.citytechinc.aem.bedrock.models.implInjectorIntegrationSpec">InjectorIntegrationSpec</a></td> 
+     <td>1</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>100%</td> 
+     <td>0.022</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><a href="#com.citytechinc.aem.bedrock.models.implLinkInjectorSpec"><i class="icon-ok"></i></a></td> 
+     <td><a href="#com.citytechinc.aem.bedrock.models.implLinkInjectorSpec">LinkInjectorSpec</a></td> 
+     <td>4</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>100%</td> 
+     <td>0.139</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><a href="#com.citytechinc.aem.bedrock.models.implModelListInjectorSpec"><i class="icon-ok"></i></a></td> 
+     <td><a href="#com.citytechinc.aem.bedrock.models.implModelListInjectorSpec">ModelListInjectorSpec</a></td> 
+     <td>1</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>100%</td> 
+     <td>0.035</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><a href="#com.citytechinc.aem.bedrock.models.implReferenceInjectorSpec"><i class="icon-ok"></i></a></td> 
+     <td><a href="#com.citytechinc.aem.bedrock.models.implReferenceInjectorSpec">ReferenceInjectorSpec</a></td> 
+     <td>11</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>100%</td> 
+     <td>0.451</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><a href="#com.citytechinc.aem.bedrock.models.implTagInjectorSpec"><i class="icon-ok"></i></a></td> 
+     <td><a href="#com.citytechinc.aem.bedrock.models.implTagInjectorSpec">TagInjectorSpec</a></td> 
+     <td>2</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>100%</td> 
+     <td>0.037</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><a href="#com.citytechinc.aem.bedrock.models.implValueMapFromRequestInjectorSpec"><i class="icon-ok"></i></a></td> 
+     <td><a href="#com.citytechinc.aem.bedrock.models.implValueMapFromRequestInjectorSpec">ValueMapFromRequestInjectorSpec</a></td> 
+     <td>1</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>100%</td> 
+     <td>0.011</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="com.citytechinc.aem.bedrock.core.page.impl">com.citytechinc.aem.bedrock.core.page.impl</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.page.impl"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <thead> 
+    <tr class="a"> 
+     <th></th> 
+     <th>Class</th> 
+     <th>Tests</th> 
+     <th>Errors </th> 
+     <th>Failures</th> 
+     <th>Skipped</th> 
+     <th>Success Rate</th> 
+     <th>Time</th> 
+    </tr> 
+   </thead> 
+   <tbody> 
+    <tr class="b"> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.page.implDefaultPageDecoratorSpec"><i class="icon-ok"></i></a></td> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.page.implDefaultPageDecoratorSpec">DefaultPageDecoratorSpec</a></td> 
+     <td>76</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>100%</td> 
+     <td>0.191</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.page.implDefaultPageManagerDecoratorSpec"><i class="icon-ok"></i></a></td> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.page.implDefaultPageManagerDecoratorSpec">DefaultPageManagerDecoratorSpec</a></td> 
+     <td>9</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>100%</td> 
+     <td>0.213</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="com.citytechinc.aem.bedrock.core.services.cache">com.citytechinc.aem.bedrock.core.services.cache</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.services.cache"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <thead> 
+    <tr class="a"> 
+     <th></th> 
+     <th>Class</th> 
+     <th>Tests</th> 
+     <th>Errors </th> 
+     <th>Failures</th> 
+     <th>Skipped</th> 
+     <th>Success Rate</th> 
+     <th>Time</th> 
+    </tr> 
+   </thead> 
+   <tbody> 
+    <tr class="b"> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.services.cacheCacheServiceSpec"><i class="icon-ok"></i></a></td> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.services.cacheCacheServiceSpec">CacheServiceSpec</a></td> 
+     <td>10</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>100%</td> 
+     <td>0.044</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="com.citytechinc.aem.bedrock.core.servlets.optionsprovider">com.citytechinc.aem.bedrock.core.servlets.optionsprovider</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.servlets.optionsprovider"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <thead> 
+    <tr class="a"> 
+     <th></th> 
+     <th>Class</th> 
+     <th>Tests</th> 
+     <th>Errors </th> 
+     <th>Failures</th> 
+     <th>Skipped</th> 
+     <th>Success Rate</th> 
+     <th>Time</th> 
+    </tr> 
+   </thead> 
+   <tbody> 
+    <tr class="b"> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.servlets.optionsproviderOptionSpec"><i class="icon-ok"></i></a></td> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.servlets.optionsproviderOptionSpec">OptionSpec</a></td> 
+     <td>2</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>100%</td> 
+     <td>0.003</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.servlets.optionsproviderOptionsProviderServletSpec"><i class="icon-ok"></i></a></td> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.servlets.optionsproviderOptionsProviderServletSpec">OptionsProviderServletSpec</a></td> 
+     <td>3</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>100%</td> 
+     <td>0.041</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="com.citytechinc.aem.bedrock.core.utils">com.citytechinc.aem.bedrock.core.utils</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.utils"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <thead> 
+    <tr class="a"> 
+     <th></th> 
+     <th>Class</th> 
+     <th>Tests</th> 
+     <th>Errors </th> 
+     <th>Failures</th> 
+     <th>Skipped</th> 
+     <th>Success Rate</th> 
+     <th>Time</th> 
+    </tr> 
+   </thead> 
+   <tbody> 
+    <tr class="b"> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.utilsPathUtilsSpec"><i class="icon-ok"></i></a></td> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.utilsPathUtilsSpec">PathUtilsSpec</a></td> 
+     <td>25</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>100%</td> 
+     <td>0.016</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="com.citytechinc.aem.bedrock.core.servlets">com.citytechinc.aem.bedrock.core.servlets</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.servlets"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <thead> 
+    <tr class="a"> 
+     <th></th> 
+     <th>Class</th> 
+     <th>Tests</th> 
+     <th>Errors </th> 
+     <th>Failures</th> 
+     <th>Skipped</th> 
+     <th>Success Rate</th> 
+     <th>Time</th> 
+    </tr> 
+   </thead> 
+   <tbody> 
+    <tr class="b"> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.servletsAbstractComponentServletSpec"><i class="icon-ok"></i></a></td> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.servletsAbstractComponentServletSpec">AbstractComponentServletSpec</a></td> 
+     <td>1</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>100%</td> 
+     <td>0.067</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.servletsAbstractJsonResponseServletSpec"><i class="icon-ok"></i></a></td> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.servletsAbstractJsonResponseServletSpec">AbstractJsonResponseServletSpec</a></td> 
+     <td>3</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>100%</td> 
+     <td>0.141</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.servletsAbstractValidatorServletSpec"><i class="icon-ok"></i></a></td> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.servletsAbstractValidatorServletSpec">AbstractValidatorServletSpec</a></td> 
+     <td>2</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>100%</td> 
+     <td>0.121</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.servletsImageServletSpec"><i class="icon-ok"></i></a></td> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.servletsImageServletSpec">ImageServletSpec</a></td> 
+     <td>11</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>100%</td> 
+     <td>0.251</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="com.citytechinc.aem.bedrock.core.request.impl">com.citytechinc.aem.bedrock.core.request.impl</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.request.impl"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <thead> 
+    <tr class="a"> 
+     <th></th> 
+     <th>Class</th> 
+     <th>Tests</th> 
+     <th>Errors </th> 
+     <th>Failures</th> 
+     <th>Skipped</th> 
+     <th>Success Rate</th> 
+     <th>Time</th> 
+    </tr> 
+   </thead> 
+   <tbody> 
+    <tr class="b"> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.request.implDefaultComponentServletRequestSpec"><i class="icon-ok"></i></a></td> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.request.implDefaultComponentServletRequestSpec">DefaultComponentServletRequestSpec</a></td> 
+     <td>17</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>0</td> 
+     <td>100%</td> 
+     <td>0.13</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <br /> 
+</div> 
+<div class="section"> 
+ <h2 id="Test_Cases">Test Cases</h2> 
+ <a name="Test_Cases"></a> 
+ <p>[<a href="#Summary">Summary</a>] [<a href="#Package_List">Package List</a>] [<a href="#Test_Cases">Test Cases</a>]</p> 
+ <div class="section"> 
+  <h3 id="BedrockAdapterFactorySpec">BedrockAdapterFactorySpec</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.adapterBedrockAdapterFactorySpec"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <tbody> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get resource adapter for node decorators returns non-null[0]</td> 
+     <td>0.056</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get resource adapter for node decorators returns non-null[1]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>resource adapt to page</td> 
+     <td>0.059</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>resource adapt to page returns null for non-page node</td> 
+     <td>0.002</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get resource adapter for invalid type returns null</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get resource resolver adapter for valid type returns non-null</td> 
+     <td>0.002</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get resource resolver adapter for invalid type returns null</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get invalid adapter returns null</td> 
+     <td>0</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="ComponentSpec">ComponentSpec</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.componentsComponentSpec"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <tbody> 
+    <tr class="a"> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.components.ComponentSpec.com.citytechinc.aem.bedrock.core.components.ComponentSpec"><i class="icon-warning-sign"></i></a></td> 
+     <td><a href="#com.citytechinc.aem.bedrock.core.components.ComponentSpec.com.citytechinc.aem.bedrock.core.components.ComponentSpec">com.citytechinc.aem.bedrock.core.components.ComponentSpec</a> 
+      <div class="detailToggle" style="display:inline"> 
+       <a href="javascript:toggleDisplay('com.citytechinc.aem.bedrock.core.components.ComponentSpec.com.citytechinc.aem.bedrock.core.components.ComponentSpec');"><span style="display:inline;" id="com.citytechinc.aem.bedrock.core.components.ComponentSpec.com.citytechinc.aem.bedrock.core.components.ComponentSpecoff"> + </span><span style="display:none;" id="com.citytechinc.aem.bedrock.core.components.ComponentSpec.com.citytechinc.aem.bedrock.core.components.ComponentSpecon"> - </span>[ Detail ]</a> 
+      </div></td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="b"> 
+     <td></td> 
+     <td>skipped</td> 
+     <td></td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="DefaultLinkBuilderSpec">DefaultLinkBuilderSpec</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.link.builders.implDefaultLinkBuilderSpec"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <tbody> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>build link for existing link</td> 
+     <td>0.12</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>build link for page</td> 
+     <td>0.023</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>build link for page with no jcr:content node</td> 
+     <td>0.008</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>build link for page with redirect</td> 
+     <td>0.005</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>build link for page with navigation title</td> 
+     <td>0.006</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>build link for page without navigation title</td> 
+     <td>0.005</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>build link for mapped page[0]</td> 
+     <td>0.057</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>build link for mapped page[1]</td> 
+     <td>0.002</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>build link for mapped page[2]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>build link for mapped page[3]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>build link for resource</td> 
+     <td>0.003</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>build link for path[0]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>build link for path[1]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>build link for path[2]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>build link for path[3]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>build link for path[4]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>build link for path[5]</td> 
+     <td>0.003</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>build link for path[6]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>build link for path[7]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>build link for path[8]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>build link and set external[0]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>build link and set external[1]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>build link for path with selectors[0]</td> 
+     <td>0.002</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>build link for path with selectors[1]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>build link for path with selectors[2]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>build link for path with selectors[3]</td> 
+     <td>0.073</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>build link for path with parameters[0]</td> 
+     <td>0.025</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>build link for path with parameters[1]</td> 
+     <td>0.024</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>build link for path with parameters[2]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>build link for path with same-name parameters</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>build image link[0]</td> 
+     <td>0.005</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>build image link[1]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>build navigation link without children</td> 
+     <td>0.006</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>build navigation link without children with active state[0]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>build navigation link without children with active state[1]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>build navigation link with children</td> 
+     <td>0.004</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="LinkTargetSpec">LinkTargetSpec</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.link.enumsLinkTargetSpec"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <tbody> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>for invalid target</td> 
+     <td>0.002</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>for target[0]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>for target[1]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>for target[2]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>for target[3]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>for target[4]</td> 
+     <td>0</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="DefaultLinkSpec">DefaultLinkSpec</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.link.implDefaultLinkSpec"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <tbody> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>empty link with null arguments</td> 
+     <td>0</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="AbstractPageEventListenerSpec">AbstractPageEventListenerSpec</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.listenersAbstractPageEventListenerSpec"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <tbody> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>process page</td> 
+     <td>0.019</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="DelegateComponentNodeSpec">DelegateComponentNodeSpec</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.nodeDelegateComponentNodeSpec"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <tbody> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>delegate</td> 
+     <td>0.026</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="DefaultBasicNodeSpec">DefaultBasicNodeSpec</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.node.implDefaultBasicNodeSpec"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <tbody> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>to string</td> 
+     <td>0.018</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get id[0]</td> 
+     <td>0.003</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get id[1]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get id[2]</td> 
+     <td>0.01</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get id[3]</td> 
+     <td>0.003</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>as map</td> 
+     <td>0.002</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get[0]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get[1]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get optional[0]</td> 
+     <td>0.002</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get optional[1]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get optional[2]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as list</td> 
+     <td>0.004</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as href[0]</td> 
+     <td>0.012</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as href[1]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as href strict[0]</td> 
+     <td>0.002</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as href strict[1]</td> 
+     <td>0.006</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as href strict[2]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as href returns absent where appropriate[0]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as href returns absent where appropriate[1]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as mapped href</td> 
+     <td>0.002</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as mapped href strict[0]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as mapped href strict[1]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as mapped href strict[2]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as href for null</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as link</td> 
+     <td>0.002</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as link strict</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as mapped link</td> 
+     <td>0.002</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as mapped link strict</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as link for null</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as link for non-existent property</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as page</td> 
+     <td>0.005</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as type[0]</td> 
+     <td>0.002</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as type[1]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get href</td> 
+     <td>0.002</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get image reference[0]</td> 
+     <td>0.013</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get image reference[1]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get image source optional[0]</td> 
+     <td>0.026</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get image source optional[1]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get image source optional[2]</td> 
+     <td>0.006</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get image source optional[3]</td> 
+     <td>0.002</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get image source optional[4]</td> 
+     <td>0.006</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get image source[0]</td> 
+     <td>0.006</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get image source[1]</td> 
+     <td>0.006</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get image source[2]</td> 
+     <td>0.008</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get named image source[0]</td> 
+     <td>0.006</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get named image source[1]</td> 
+     <td>0.005</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get named image source[2]</td> 
+     <td>0.006</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get named image source[3]</td> 
+     <td>0.006</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get image source with width[0]</td> 
+     <td>0.007</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get image source with width[1]</td> 
+     <td>0.007</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get image source with width[2]</td> 
+     <td>0.009</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get image source with width[3]</td> 
+     <td>0.01</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get named image source with width[0]</td> 
+     <td>0.007</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get named image source with width[1]</td> 
+     <td>0.006</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get named image source with width[2]</td> 
+     <td>0.006</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get named image source with width[3]</td> 
+     <td>0.006</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get named image source with width[4]</td> 
+     <td>0.007</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get named image source with width[5]</td> 
+     <td>0.006</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get named image source with width[6]</td> 
+     <td>0.005</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get named image source with width[7]</td> 
+     <td>0.005</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get index</td> 
+     <td>0.017</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get index for resource type</td> 
+     <td>0.004</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get named image reference</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get link</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get link builder</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get node</td> 
+     <td>0.002</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get path</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get properties</td> 
+     <td>0.009</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get properties for null node returns empty list</td> 
+     <td>0.003</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get resource</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>has image[0]</td> 
+     <td>0.008</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>has image[1]</td> 
+     <td>0.002</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>has named image[0]</td> 
+     <td>0.006</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>has named image[1]</td> 
+     <td>0.006</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>has named image[2]</td> 
+     <td>0.003</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>has named image[3]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>has named image[4]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get image rendition returns absent</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get image rendition</td> 
+     <td>0.002</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get named image rendition[0]</td> 
+     <td>0.002</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get named image rendition[1]</td> 
+     <td>0.015</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get named image rendition[2]</td> 
+     <td>0.003</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="DefaultComponentNodeSpec">DefaultComponentNodeSpec</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.node.implDefaultComponentNodeSpec"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <tbody> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get parent[0]</td> 
+     <td>0.002</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get parent[1]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get parent returns null for root node</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>find ancestor with property[0]</td> 
+     <td>0.023</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>find ancestor with property[1]</td> 
+     <td>0.017</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>find ancestor with property[2]</td> 
+     <td>0.016</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>find ancestor returns absent[0]</td> 
+     <td>0.021</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>find ancestor returns absent[1]</td> 
+     <td>0.022</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>find ancestor with property value[0]</td> 
+     <td>0.017</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>find ancestor with property value[1]</td> 
+     <td>0.013</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>find ancestor with property value[2]</td> 
+     <td>0.012</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>find ancestor with property value returns absent</td> 
+     <td>0.023</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>find descendants</td> 
+     <td>0.027</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as href inherited[0]</td> 
+     <td>0.003</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as href inherited[1]</td> 
+     <td>0.002</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as href inherited[2]</td> 
+     <td>0.003</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as href inherited[3]</td> 
+     <td>0.002</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as href inherited[4]</td> 
+     <td>0.004</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as href inherited[5]</td> 
+     <td>0.003</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as href inherited returns absent where appropriate[0]</td> 
+     <td>0.004</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as href inherited returns absent where appropriate[1]</td> 
+     <td>0.005</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as link inherited[0]</td> 
+     <td>0.002</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as link inherited[1]</td> 
+     <td>0.002</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as link inherited[2]</td> 
+     <td>0.002</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as link inherited[3]</td> 
+     <td>0.002</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as link inherited[4]</td> 
+     <td>0.003</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as link inherited[5]</td> 
+     <td>0.002</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as link inherited returns absent where appropriate[0]</td> 
+     <td>0.003</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as link inherited returns absent where appropriate[1]</td> 
+     <td>0.003</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as page inherited</td> 
+     <td>0.011</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get node inherited[0]</td> 
+     <td>0.025</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get node inherited[1]</td> 
+     <td>0.007</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get node inherited is absent when ancestor not found</td> 
+     <td>0.02</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get nodes inherited[0]</td> 
+     <td>0.013</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get nodes inherited[1]</td> 
+     <td>0.007</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get nodes inherited[2]</td> 
+     <td>0.01</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get nodes inherited[3]</td> 
+     <td>0.014</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get image source inherited optional[0]</td> 
+     <td>0.027</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get image source inherited optional[1]</td> 
+     <td>0.025</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get image source inherited optional[2]</td> 
+     <td>0.031</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get image source inherited optional[3]</td> 
+     <td>0.017</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get image source inherited optional[4]</td> 
+     <td>0.024</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get image source inherited optional[5]</td> 
+     <td>0.014</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get image source inherited optional[6]</td> 
+     <td>0.018</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get image source inherited optional[7]</td> 
+     <td>0.017</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get image source inherited optional[8]</td> 
+     <td>0.018</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get image source inherited optional[9]</td> 
+     <td>0.046</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get image source inherited[0]</td> 
+     <td>0.012</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get image source inherited[1]</td> 
+     <td>0.016</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get image source inherited[2]</td> 
+     <td>0.019</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get image source inherited[3]</td> 
+     <td>0.013</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get image source inherited[4]</td> 
+     <td>0.02</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get image source inherited[5]</td> 
+     <td>0.015</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get image source inherited[6]</td> 
+     <td>0.019</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get named image source inherited[0]</td> 
+     <td>0.016</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get named image source inherited[1]</td> 
+     <td>0.015</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get inherited[0]</td> 
+     <td>0.004</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get inherited[1]</td> 
+     <td>0.005</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get inherited[2]</td> 
+     <td>0.002</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get inherited optional</td> 
+     <td>0.003</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get component node at relative path</td> 
+     <td>0.002</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get component nodes[0]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get component nodes[1]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get component nodes for predicate</td> 
+     <td>0.006</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get component nodes at relative path[0]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get component nodes at relative path[1]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get component nodes at relative path for resource type[0]</td> 
+     <td>0.005</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get component nodes at relative path for resource type[1]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get component nodes at relative path for predicate</td> 
+     <td>0.005</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="ComponentNodePropertyExistsPredicateSpec">ComponentNodePropertyExistsPredicateSpec</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.node.predicatesComponentNodePropertyExistsPredicateSpec"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <tbody> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>node where property exists is included</td> 
+     <td>0.003</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>node where property does not exist is not included</td> 
+     <td>0.002</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>node for non-existing resource is not included</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>node that throws exception is not included</td> 
+     <td>0.021</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="ComponentNodeResourceTypePredicateSpec">ComponentNodeResourceTypePredicateSpec</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.node.predicatesComponentNodeResourceTypePredicateSpec"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <tbody> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>exception thrown when resource type is null</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>node with matching resource type is included</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>node with non-matching resource type is not included</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>node with no resource type is not included</td> 
+     <td>0.001</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="PropertyNamePredicateSpec">PropertyNamePredicateSpec</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.node.predicatesPropertyNamePredicateSpec"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <tbody> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>predicate applied when property matches name[0]</td> 
+     <td>0.005</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>predicate applied when property matches name[1]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>predicate not applied when property throws exception</td> 
+     <td>0.002</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="ResourceTypePredicateSpec">ResourceTypePredicateSpec</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.node.predicatesResourceTypePredicateSpec"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <tbody> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>resource with matching resource type is included[0]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>resource with matching resource type is included[1]</td> 
+     <td>0</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="DefaultPageDecoratorSpec">DefaultPageDecoratorSpec</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.page.implDefaultPageDecoratorSpec"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <tbody> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get absolute parent[0]</td> 
+     <td>0.007</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get absolute parent[1]</td> 
+     <td>0.003</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get absolute parent[2]</td> 
+     <td>0.003</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get parent[0]</td> 
+     <td>0.003</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get parent[1]</td> 
+     <td>0.003</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get parent[2]</td> 
+     <td>0.003</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>adapt to[0]</td> 
+     <td>0.002</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>adapt to[1]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>adapt to returns null[0]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>adapt to returns null[1]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>as map[0]</td> 
+     <td>0.002</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>as map[1]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>as map[2]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get[0]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get[1]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get[2]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get optional[0]</td> 
+     <td>0.002</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get optional[1]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get optional[2]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as href[0]</td> 
+     <td>0.002</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as href[1]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as href[2]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as href strict[0]</td> 
+     <td>0.002</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as href strict[1]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as href strict[2]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as mapped href[0]</td> 
+     <td>0.003</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as mapped href[1]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as mapped href[2]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as mapped href strict[0]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as mapped href strict[1]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as mapped href strict[2]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get image source optional[0]</td> 
+     <td>0.002</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get image source optional[1]</td> 
+     <td>0.005</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get image source</td> 
+     <td>0.005</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get named image source[0]</td> 
+     <td>0.004</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get named image source[1]</td> 
+     <td>0.004</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get image source with width[0]</td> 
+     <td>0.005</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get image source with width[1]</td> 
+     <td>0.004</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get named image source with width[0]</td> 
+     <td>0.004</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get named image source with width[1]</td> 
+     <td>0.003</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get named image source with width[2]</td> 
+     <td>0.004</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get named image source with width[3]</td> 
+     <td>0.003</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>find ancestor optional[0]</td> 
+     <td>0.004</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>find ancestor optional[1]</td> 
+     <td>0.003</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>find ancestor optional[2]</td> 
+     <td>0.006</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>find ancestor with property[0]</td> 
+     <td>0.002</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>find ancestor with property[1]</td> 
+     <td>0.003</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>find ancestor with property[2]</td> 
+     <td>0.007</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>find ancestor returns absent[0]</td> 
+     <td>0.005</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>find ancestor returns absent[1]</td> 
+     <td>0.006</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>find ancestor returns absent[2]</td> 
+     <td>0.009</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>find ancestor with property value</td> 
+     <td>0.005</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>find ancestor with property value returns absent</td> 
+     <td>0.007</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get template path[0]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get template path[1]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get component node</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get component node returns absent optional for page with no jcr:content node</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get component node at relative path</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>adapt to basic node</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>adapt to component node</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>adapt to node for page with no jcr:content node returns null</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get children</td> 
+     <td>0.011</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get displayable children</td> 
+     <td>0.006</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get children filtered for predicate</td> 
+     <td>0.007</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>find descendants</td> 
+     <td>0.013</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get properties</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get properties for page with no jcr:content node</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get properties at relative path</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get properties at non-existent relative path</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get title[0]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get title[1]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get title[2]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get title returns absent where appropriate[0]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get title returns absent where appropriate[1]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get image link</td> 
+     <td>0.002</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get navigation link</td> 
+     <td>0.001</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="DefaultPageManagerDecoratorSpec">DefaultPageManagerDecoratorSpec</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.page.implDefaultPageManagerDecoratorSpec"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <tbody> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>find pages for predicate</td> 
+     <td>0.019</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>find pages for tag IDs</td> 
+     <td>0.082</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>find pages for tag IDs matching all</td> 
+     <td>0.004</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>tagged non-page node is excluded from search results</td> 
+     <td>0.041</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>search</td> 
+     <td>0.027</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>search with limit</td> 
+     <td>0.003</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>find pages for template</td> 
+     <td>0.018</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>find pages for non-existing template</td> 
+     <td>0.016</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>find pages for template with invalid starting path</td> 
+     <td>0.003</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="TemplatePredicateSpec">TemplatePredicateSpec</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.page.predicatesTemplatePredicateSpec"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <tbody> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>page has no template property</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>template matches page template</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>template does not match page template</td> 
+     <td>0.001</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="PageReplicationListenerSpec">PageReplicationListenerSpec</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.replicationPageReplicationListenerSpec"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <tbody> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>handle activate for invalid path does nothing</td> 
+     <td>0.02</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>handle activate for non-page path does nothing</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>handle activate for page path activates ancestor pages</td> 
+     <td>0.018</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>handle activate for page path ignores already activated ancestor pages</td> 
+     <td>0.005</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="DefaultComponentServletRequestSpec">DefaultComponentServletRequestSpec</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.request.implDefaultComponentServletRequestSpec"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <tbody> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get selectors[0]</td> 
+     <td>0.08</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get selectors[1]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get selectors[2]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get request parameter optional[0]</td> 
+     <td>0.011</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get request parameter optional[1]</td> 
+     <td>0.002</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get request parameter optional[2]</td> 
+     <td>0.002</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get request parameter[0]</td> 
+     <td>0.003</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get request parameter[1]</td> 
+     <td>0.002</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get request parameter with default value[0]</td> 
+     <td>0.003</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get request parameter with default value[1]</td> 
+     <td>0.003</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get request parameter with default value[2]</td> 
+     <td>0.002</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get request parameters optional[0]</td> 
+     <td>0.005</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get request parameters optional[1]</td> 
+     <td>0.002</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get request parameters optional[2]</td> 
+     <td>0.002</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get request parameters[0]</td> 
+     <td>0.003</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get request parameters[1]</td> 
+     <td>0.004</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>getters return non-null values</td> 
+     <td>0.004</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="CacheServiceSpec">CacheServiceSpec</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.services.cacheCacheServiceSpec"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <tbody> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>clear all caches[0]</td> 
+     <td>0.023</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>clear all caches[1]</td> 
+     <td>0.003</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>clear specific cache[0]</td> 
+     <td>0.007</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>clear specific cache[1]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get cache size[0]</td> 
+     <td>0.003</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get cache size[1]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get cache stats[0]</td> 
+     <td>0.005</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get cache stats[1]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>list caches[0]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>list caches[1]</td> 
+     <td>0.001</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="DefaultSelectiveReplicationServiceSpec">DefaultSelectiveReplicationServiceSpec</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.services.implDefaultSelectiveReplicationServiceSpec"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <tbody> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>valid replication request</td> 
+     <td>0.018</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>valid replication request with additional options</td> 
+     <td>0.001</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="OsgiConfigurationSpec">OsgiConfigurationSpec</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.servicesOsgiConfigurationSpec"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <tbody> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>to map[0]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>to map[1]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>to map with default value[0]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>to map with default value[1]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as double[0]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as double[1]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as long[0]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as long[1]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as boolean[0]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as boolean[1]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as integer[0]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as integer[1]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as string[0]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as string[1]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as list[0]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as list[1]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as list[2]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as list with default value[0]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get as list with default value[1]</td> 
+     <td>0</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="AbstractComponentServletSpec">AbstractComponentServletSpec</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.servletsAbstractComponentServletSpec"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <tbody> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>process get</td> 
+     <td>0.067</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="AbstractJsonResponseServletSpec">AbstractJsonResponseServletSpec</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.servletsAbstractJsonResponseServletSpec"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <tbody> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>write json response</td> 
+     <td>0.128</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>write json response with date format</td> 
+     <td>0.005</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>write json response with date format and locale</td> 
+     <td>0.008</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="AbstractValidatorServletSpec">AbstractValidatorServletSpec</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.servletsAbstractValidatorServletSpec"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <tbody> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>exception thrown when value parameter is null</td> 
+     <td>0.007</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>validate method called with correct arguments</td> 
+     <td>0.114</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="ImageServletSpec">ImageServletSpec</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.servletsImageServletSpec"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <tbody> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>create layer returns null</td> 
+     <td>0.005</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>image wrapper[0]</td> 
+     <td>0.003</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>image wrapper[1]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>image wrapper[2]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>image wrapper[3]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>image wrapper[4]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>image wrapper[5]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>image wrapper[6]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>write layer for page, no selectors[0]</td> 
+     <td>0.231</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>write layer for page, no selectors[1]</td> 
+     <td>0.003</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>write layer for page, no selectors[2]</td> 
+     <td>0.003</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="OptionSpec">OptionSpec</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.servlets.optionsproviderOptionSpec"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <tbody> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>sort options[0]</td> 
+     <td>0.003</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>sort options[1]</td> 
+     <td>0</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="OptionsProviderServletSpec">OptionsProviderServletSpec</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.servlets.optionsproviderOptionsProviderServletSpec"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <tbody> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>no options</td> 
+     <td>0.008</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>options with root</td> 
+     <td>0.022</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>options with no root</td> 
+     <td>0.011</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="SelectiveReplicationServletSpec">SelectiveReplicationServletSpec</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.servlets.replicationSelectiveReplicationServletSpec"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <tbody> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>null parameters throw exception</td> 
+     <td>0.008</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>invalid parameters throw exception[0]</td> 
+     <td>0.002</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>invalid parameters throw exception[1]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>invalid parameters throw exception[2]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>invalid parameters throw exception[3]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>valid parameters</td> 
+     <td>0.009</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="ComponentTagSpec">ComponentTagSpec</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.tagsComponentTagSpec"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <tbody> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get component instance</td> 
+     <td>0.08</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get component instance with scope[0]</td> 
+     <td>0.005</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get component instance with scope[1]</td> 
+     <td>0.004</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get component instance with scope[2]</td> 
+     <td>0.004</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get component instance with scope[3]</td> 
+     <td>0.004</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="DescriptionTagSpec">DescriptionTagSpec</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.tagsDescriptionTagSpec"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <tbody> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>description variations[0]</td> 
+     <td>0.039</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>description variations[1]</td> 
+     <td>0.005</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>description variations[2]</td> 
+     <td>0.004</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>description variations[3]</td> 
+     <td>0.004</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>empty description</td> 
+     <td>0.005</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="FavIconTagSpec">FavIconTagSpec</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.tagsFavIconTagSpec"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <tbody> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>no favicon, no output</td> 
+     <td>0.062</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>valid favicon, HTML output</td> 
+     <td>0.006</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="HrefTagSpec">HrefTagSpec</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.tagsHrefTagSpec"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <tbody> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>href for property</td> 
+     <td>0.011</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>href for inherited property[0]</td> 
+     <td>0.006</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>href for inherited property[1]</td> 
+     <td>0.007</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>href for inherited property[2]</td> 
+     <td>0.008</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>href for inherited property[3]</td> 
+     <td>0.005</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="ScopedTagSpec">ScopedTagSpec</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.tagsScopedTagSpec"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <tbody> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>set attribute in scope[0]</td> 
+     <td>0.008</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>set attribute in scope[1]</td> 
+     <td>0.003</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>set attribute in scope[2]</td> 
+     <td>0.003</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>set attribute in scope[3]</td> 
+     <td>0.004</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>invalid scope throws exception</td> 
+     <td>0</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="TitleTagSpec">TitleTagSpec</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.tagsTitleTagSpec"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <tbody> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>title variations[0]</td> 
+     <td>0.011</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>title variations[1]</td> 
+     <td>0.004</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>title variations[2]</td> 
+     <td>0.004</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>title variations[3]</td> 
+     <td>0.005</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>title variations[4]</td> 
+     <td>0.005</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>title variations[5]</td> 
+     <td>0.004</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>empty title defaults to page name</td> 
+     <td>0.004</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="PathUtilsSpec">PathUtilsSpec</h3> 
+  <a name="com.citytechinc.aem.bedrock.core.utilsPathUtilsSpec"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <tbody> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>is content[0]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>is content[1]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>is content[2]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>is content[3]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>is content[4]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>is content[5]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>is content[6]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>is external[0]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>is external[1]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>is external[2]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>is external[3]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>is external[4]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>is external[5]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>is external strict[0]</td> 
+     <td>0.004</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>is external strict[1]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>is external strict[2]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>is external strict[3]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get page path for string[0]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get page path for string[1]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get page path for string[2]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get page path for string[3]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get page path for request[0]</td> 
+     <td>0.007</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get page path for request[1]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get page path for request[2]</td> 
+     <td>0</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get page path for request[3]</td> 
+     <td>0</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="AdaptableInjectorSpec">AdaptableInjectorSpec</h3> 
+  <a name="com.citytechinc.aem.bedrock.models.implAdaptableInjectorSpec"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <tbody> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get value returns null for invalid adapter type</td> 
+     <td>0.088</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get value returns non-null for valid adapter type</td> 
+     <td>0.01</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="ComponentInjectorSpec">ComponentInjectorSpec</h3> 
+  <a name="com.citytechinc.aem.bedrock.models.implComponentInjectorSpec"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <tbody> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get value from resource for valid type returns non-null value[0]</td> 
+     <td>0.013</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get value from resource for valid type returns non-null value[1]</td> 
+     <td>0.001</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get value from resource for valid type returns non-null value[2]</td> 
+     <td>0.01</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get value from resource for valid type returns non-null value[3]</td> 
+     <td>0.002</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get value from resource for valid type returns non-null value[4]</td> 
+     <td>0.002</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get value from resource for valid type returns non-null value[5]</td> 
+     <td>0.022</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get value from resource for valid type returns non-null value[6]</td> 
+     <td>0.016</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get value from resource for valid type returns non-null value[7]</td> 
+     <td>0.065</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get value from resource for valid type returns non-null value[8]</td> 
+     <td>0.004</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>get value from resource for invalid type returns null value</td> 
+     <td>0.001</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="EnumInjectorSpec">EnumInjectorSpec</h3> 
+  <a name="com.citytechinc.aem.bedrock.models.implEnumInjectorSpec"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <tbody> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>enum is injected when component property value is valid</td> 
+     <td>0.052</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>enum is null when component property does not exist</td> 
+     <td>0.013</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="InheritInjectorSpec">InheritInjectorSpec</h3> 
+  <a name="com.citytechinc.aem.bedrock.models.implInheritInjectorSpec"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <tbody> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>Test inherit</td> 
+     <td>0.027</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="InjectorIntegrationSpec">InjectorIntegrationSpec</h3> 
+  <a name="com.citytechinc.aem.bedrock.models.implInjectorIntegrationSpec"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <tbody> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>injected values from multiple injectors are correct types</td> 
+     <td>0.022</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="LinkInjectorSpec">LinkInjectorSpec</h3> 
+  <a name="com.citytechinc.aem.bedrock.models.implLinkInjectorSpec"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <tbody> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>link is null if component node is null</td> 
+     <td>0.039</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>link has correct path value</td> 
+     <td>0.086</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>link has correct path value and title</td> 
+     <td>0.007</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>inherited link has correct path value</td> 
+     <td>0.007</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="ModelListInjectorSpec">ModelListInjectorSpec</h3> 
+  <a name="com.citytechinc.aem.bedrock.models.implModelListInjectorSpec"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <tbody> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>inject list of models</td> 
+     <td>0.035</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="ReferenceInjectorSpec">ReferenceInjectorSpec</h3> 
+  <a name="com.citytechinc.aem.bedrock.models.implReferenceInjectorSpec"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <tbody> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>all properties should be null if component is unconfigured</td> 
+     <td>0.029</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>component has a single Resource configured</td> 
+     <td>0.049</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>component has a single PageDecorator configured</td> 
+     <td>0.05</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>component has multiple Resources configured</td> 
+     <td>0.046</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>component has multiple PageDecorators configured</td> 
+     <td>0.048</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>component has a single inherited Resource configured</td> 
+     <td>0.046</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>component has a single inherited PageDecorator configured</td> 
+     <td>0.044</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>component has multiple inherited Resources configured</td> 
+     <td>0.039</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>component has multiple inherited PageDecorators configured</td> 
+     <td>0.033</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>component has a named single Resource configured</td> 
+     <td>0.034</td> 
+    </tr> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>component has a named single inherited Resource configured</td> 
+     <td>0.033</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="TagInjectorSpec">TagInjectorSpec</h3> 
+  <a name="com.citytechinc.aem.bedrock.models.implTagInjectorSpec"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <tbody> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>all tags populated from root</td> 
+     <td>0.019</td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>all inherited tags populated</td> 
+     <td>0.018</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="ValueMapFromRequestInjectorSpec">ValueMapFromRequestInjectorSpec</h3> 
+  <a name="com.citytechinc.aem.bedrock.models.implValueMapFromRequestInjectorSpec"></a> 
+  <table border="1" class="bodyTable table table-striped table-hover"> 
+   <tbody> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>inject values for component</td> 
+     <td>0.011</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <br /> 
+</div> 
+<div class="section"> 
+ <h2 id="Failure_Details">Failure Details</h2> 
+ <a name="Failure_Details"></a> 
+ <p>[<a href="#Summary">Summary</a>] [<a href="#Package_List">Package List</a>] [<a href="#Test_Cases">Test Cases</a>]</p> 
+ <br /> 
+ <table border="1" class="bodyTable table table-striped table-hover"> 
+  <tbody> 
+   <tr class="a"> 
+    <td><i class="icon-warning-sign"></i></td> 
+    <td><a name="com.citytechinc.aem.bedrock.core.components.ComponentSpec.com.citytechinc.aem.bedrock.core.components.ComponentSpec"></a>com.citytechinc.aem.bedrock.core.components.ComponentSpec</td> 
+   </tr> 
+   <tr class="b"> 
+    <td></td> 
+    <td>skipped: skipped</td> 
+   </tr> 
+  </tbody> 
+ </table> 
+ <br /> 
+</div>
+			</div>
+		</div>
+	</div>
+	</div>
+
+	</div><!-- /container -->
+	
+	<!-- Footer
+	================================================== -->
+	<footer class="well">
+		<div class="container">
+			<div class="row">
+				<div class="span4 bottom-nav">
+					<ul class="nav nav-list">
+						<li class="nav-header">User Guide</li>
+						<li>
+							<a href="adapters.html" title="Adapters">Adapters </a>
+						</li>
+						<li>
+							<a href="component-framework.html" title="Component Framework">Component Framework </a>
+						</li>
+						<li>
+							<a href="constants.html" title="Constants">Constants </a>
+						</li>
+						<li>
+							<a href="image-rendering.html" title="Image Rendering">Image Rendering </a>
+						</li>
+						<li>
+							<a href="including-in-aem-projects.html" title="Including in AEM Projects">Including in AEM Projects </a>
+						</li>
+						<li>
+							<a href="javascript.html" title="JavaScript">JavaScript </a>
+						</li>
+						<li>
+							<a href="links.html" title="Links">Links </a>
+						</li>
+						<li>
+							<a href="optionals.html" title="Optionals">Optionals </a>
+						</li>
+						<li>
+							<a href="predicates.html" title="Predicates">Predicates </a>
+						</li>
+						<li>
+							<a href="services.html" title="Services">Services </a>
+						</li>
+						<li>
+							<a href="servlets.html" title="Servlets">Servlets </a>
+						</li>
+						<li>
+							<a href="injectors.html" title="Sling Models Injectors">Sling Models Injectors </a>
+						</li>
+						<li>
+							<a href="tag-library.html" title="Tag Library">Tag Library </a>
+						</li>
+					</ul>
+				</div>
+				<div class="span5 bottom-nav">
+					<ul class="nav nav-list">
+						<li class="nav-header">Project Documentation</li>
+						<li>
+							<a href="project-info.html" title="Project Information">Project Information <i class="icon-chevron-right"></i></a>
+						</li>
+						<li>
+							<a href="project-reports.html" title="Project Reports">Project Reports <i class="icon-chevron-down"></i></a>
+							<ul class="nav nav-list">
+						<li>
+							<a href="apidocs/index.html" title="JavaDocs">JavaDocs </a>
+						</li>
+						<li class="active">
+							<a href="#" title="Surefire Report">Surefire Report </a>
+						</li>
+						<li>
+							<a href="pmd.html" title="PMD">PMD </a>
+						</li>
+						<li>
+							<a href="cobertura/index.html" title="Cobertura Test Coverage">Cobertura Test Coverage </a>
+						</li>
+						<li>
+							<a href="github-report.html" title="GitHub Report">GitHub Report </a>
+						</li>
+						<li>
+							<a href="jsdoc/index.html" title="JsDocs">JsDocs </a>
+						</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</footer>
+		
+	<div class="container subfooter">
+		<div class="row">
+			<div class="span12">
+				<p class="pull-right"><a href="#">Back to top</a></p>
+				<p class="copyright">Copyright &copy;2015 <a href="http://www.citytechinc.com">CITYTECH, Inc.</a>. All Rights Reserved.</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- Le javascript
+	================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+
+	<!-- Fallback jQuery loading from Google CDN:
+	     http://stackoverflow.com/questions/1014203/best-way-to-use-googles-hosted-jquery-but-fall-back-to-my-hosted-library-on-go -->
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script type="text/javascript">
+		if (typeof jQuery == 'undefined')
+		{
+			document.write(unescape("%3Cscript src='./js/jquery-1.8.3.min.js' type='text/javascript'%3E%3C/script%3E"));
+		}
+	</script>
+	
+	<script src="./js/bootstrap.min.js"></script>
+	<script src="./js/lightbox.js"></script>
+	<script src="./js/jquery.smooth-scroll.min.js"></script>
+	<!-- back button support for smooth scroll -->
+	<script src="./js/jquery.ba-bbq.min.js"></script>
+	<script src="http://yandex.st/highlightjs/7.3/highlight.min.js"></script>
+
+	<script src="./js/reflow-skin.js"></script>
+	
+	</body>
+</html>
