@@ -120,6 +120,7 @@
 			<div class="body-content">
 <div class="section"> 
  <h2 id="Sling_Models_Injectors">Sling Models Injectors</h2> 
+ <p>Bedrock provides several custom Sling Models injectors to facilitate injection of Bedrock-specific context objects. Injector services are registered by default when the Bedrock Models bundle is installed, so <tt>@Inject</tt> annotated fields in model classes will be handled by the injectors below in addition to the default set of injectors provided by Sling. </p> 
  <div class="section"> 
   <h3 id="Available_Injectors">Available Injectors</h3> 
   <table border="0" class="bodyTable table table-striped table-hover"> 
@@ -135,44 +136,44 @@
     <tr class="b"> 
      <td align="left">Resource Resolver Adaptable Injector </td> 
      <td align="left">adaptable </td> 
-     <td align="left">Integer.MIN_VALUE </td> 
-     <td align="left">Injects objects that can be adapted from ResourceResolver</td> 
+     <td align="left"><tt>Integer.MIN_VALUE</tt> </td> 
+     <td align="left">Injects objects that can be adapted from <tt>ResourceResolver</tt>, e.g. <tt>PageManagerDecorator</tt></td> 
     </tr> 
     <tr class="a"> 
      <td align="left">Component Content Injector </td> 
      <td align="left">component </td> 
-     <td align="left">Integer.MAX_VALUE </td> 
-     <td align="left">Injects objects related to the current component context</td> 
+     <td align="left"><tt>Integer.MAX_VALUE</tt> </td> 
+     <td align="left">Injects objects derived from the current component context</td> 
     </tr> 
     <tr class="b"> 
      <td align="left">Enum Injector </td> 
      <td align="left">enum </td> 
      <td align="left">4000 </td> 
-     <td align="left">Injects Enums</td> 
+     <td align="left">Injects an enum for the property value matching the annotated field name</td> 
     </tr> 
     <tr class="a"> 
      <td align="left">Image Injector </td> 
      <td align="left">images </td> 
      <td align="left">4000 </td> 
-     <td align="left">Injects com.day.cq.wcm.foundation.Image from the current resource</td> 
+     <td align="left">Injects <tt>com.day.cq.wcm.foundation.Image</tt> from the current resource</td> 
     </tr> 
     <tr class="b"> 
      <td align="left">Inherit Injector </td> 
      <td align="left">inherit </td> 
      <td align="left">4000 </td> 
-     <td align="left">Injects a property inheriting from parent pages if it isn’t found on the current page</td> 
+     <td align="left">Injects a property that inherits from ancestor pages if it isn’t found on the current resource</td> 
     </tr> 
     <tr class="a"> 
      <td align="left">Link Injector </td> 
      <td align="left">links </td> 
      <td align="left">4000 </td> 
-     <td align="left">Injects com.citytechinc.aem.bedrock.api.link.Link from the a property</td> 
+     <td align="left">Injects <tt>com.citytechinc.aem.bedrock.api.link.Link</tt> derived from the property value for the current field name</td> 
     </tr> 
     <tr class="b"> 
      <td align="left">Model List Injector </td> 
      <td align="left">model-list </td> 
      <td align="left">999 </td> 
-     <td align="left">Injects a list of models from adapted from the child of a child resource gotten by name</td> 
+     <td align="left">Injects a list of models from adapted from the child of a named child resource</td> 
     </tr> 
     <tr class="a"> 
      <td align="left">Reference Injector </td> 
@@ -184,20 +185,55 @@
      <td align="left">Tag Injector </td> 
      <td align="left">tags </td> 
      <td align="left">800 </td> 
-     <td align="left">Gets a property and resolves tags from it</td> 
+     <td align="left">Resolves a <tt>com.day.cq.tagging.Tag</tt> object (or list of tags) for the given property</td> 
     </tr> 
     <tr class="a"> 
      <td align="left">ValueMap Injector </td> 
      <td align="left">valuemap </td> 
      <td align="left">2500 </td> 
-     <td align="left">Gets a property from a ValueMap</td> 
+     <td align="left">Injects a property value with the given type from a <tt>ValueMap</tt></td> 
     </tr> 
    </tbody> 
   </table> 
  </div> 
  <div class="section"> 
   <h3 id="Injector-specific_Annotations">Injector-specific Annotations</h3> 
-  <p>Annotation | Supported Optional Elements | Injector @ImageInject | injectionStrategy, isSelf, inherit, and selectors | images @IneritInject | injectionStrategy | inherit @LinkInject | injectionStrategy, titleProperty, and inherit | links @ReferenceInject | injectionStrategy and inherit | references @TagInject | injectionStrategy, and inherit | tags</p> 
+  <table border="0" class="bodyTable table table-striped table-hover"> 
+   <thead> 
+    <tr class="a"> 
+     <th align="left">Annotation </th> 
+     <th align="left">Supported Optional Elements </th> 
+     <th align="left">Injector</th> 
+    </tr> 
+   </thead> 
+   <tbody> 
+    <tr class="b"> 
+     <td align="left"><tt>@ImageInject</tt> </td> 
+     <td align="left"><tt>injectionStrategy, isSelf, inherit, selectors</tt> </td> 
+     <td align="left">images</td> 
+    </tr> 
+    <tr class="a"> 
+     <td align="left"><tt>@InheritInject</tt> </td> 
+     <td align="left"><tt>injectionStrategy</tt> </td> 
+     <td align="left">inherit</td> 
+    </tr> 
+    <tr class="b"> 
+     <td align="left"><tt>@LinkInject</tt> </td> 
+     <td align="left"><tt>injectionStrategy, titleProperty, inherit</tt> </td> 
+     <td align="left">links</td> 
+    </tr> 
+    <tr class="a"> 
+     <td align="left"><tt>@ReferenceInject</tt> </td> 
+     <td align="left"><tt>injectionStrategy, inherit</tt> </td> 
+     <td align="left">references</td> 
+    </tr> 
+    <tr class="b"> 
+     <td align="left"><tt>@TagInject</tt> </td> 
+     <td align="left"><tt>injectionStrategy, inherit</tt> </td> 
+     <td align="left">tags</td> 
+    </tr> 
+   </tbody> 
+  </table> 
  </div> 
 </div>
 			</div>
@@ -275,7 +311,7 @@
 		<div class="row">
 			<div class="span12">
 				<p class="pull-right"><a href="#">Back to top</a></p>
-				<p class="copyright">Copyright &copy;2015 <a href="http://www.citytechinc.com">CITYTECH, Inc.</a>. All Rights Reserved.</p>
+				<p class="copyright">Copyright &copy;2016 <a href="http://www.citytechinc.com">CITYTECH, Inc.</a>. All Rights Reserved.</p>
 			</div>
 		</div>
 	</div>

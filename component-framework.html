@@ -122,17 +122,85 @@
  <h2 id="Component_Framework">Component Framework</h2> 
  <div class="section"> 
   <h3 id="Overview">Overview</h3> 
-  <p>Component JSPs should contain only the HTML markup and JSTL tags necessary to render the component and it’s view permutations, rather than Java “scriptlet” blocks containing business logic. To facilitate the separation of controller logic from presentation, Bedrock provides a custom JSP tag to associate a Java class (or “backing bean”) to a component JSP. The library also provides an abstract component class containing accessors and convenience methods for objects that are typically available in the JSP page context (e.g. current page, current node, Sling resource resolver, etc.). Decorated instances for the current page and component node implement common use cases to reduce boilerplate code and encourage the use of established conventions. This allows the developer to focus on project-specific concerns rather than reimplementing functionality that is frequently required for a typical AEM implementation but may not be provided by the AEM APIs.</p>
+  <p>The introduction of the Sightly templating language has eliminated the need for custom JSP tags, scriptlets, and other unpleasantries when separating a component’s view from it’s supporting business logic. The <a class="externalLink" href="https://sling.apache.org/documentation/bundles/models.html">Sling Models</a> framework offers a robust, POJO-based development pattern that Bedrock augments to greatly simplify AEM component development.</p> 
+  <p>For projects with JSP-based components, Bedrock maintains a custom JSP tag to mimic Sightly’s “use” functionality for associating a Java/Groovy class with a component JSP.</p>
  </div> 
  <div class="section"> 
-  <h3 id="Usage">Usage</h3> 
-  <p>The component JSP needs to include the Bedrock <tt>global.jsp</tt> to define the tag namespace and ensure that required variables are set in the page context.</p> 
-  <p>Component Java classes can be instantiated in one of two ways:</p> 
+  <h3 id="Abstract_Component_Java_Class">Abstract Component Java Class</h3> 
+  <p>Model classes may extend the <tt>com.citytechinc.aem.bedrock.core.components.AbstractComponent</tt> class to expose numerous convenience methods for retrieving/transforming property values, traversing the content repository, and generally reducing the amount of boilerplate code needed to perform common node- and property-based operations for a component.</p> 
+  <p>The Java/Groovy model class for the component should expose getters for the values that required to render the component’s view.</p> 
+  <div class="source"> 
+   <pre>package com.projectname.components.content
+
+import com.citytechinc.aem.bedrock.core.components.AbstractComponent
+import com.citytechinc.aem.bedrock.api.content.page.PageDecorator
+import org.apache.sling.models.annotations.Model
+
+@Model(adaptables = [Resource, SlingHttpServletRequest])
+class Navigation extends AbstractComponent {
+
+    @Inject
+    PageDecorator currentPage
+
+    String getTitle() {
+        get(&quot;jcr:title&quot;, &quot;&quot;)
+    }
+
+    List&lt;PageDecorator&gt; getPages() {
+        currentPage.getChildren(true)
+    }
+} 
+</pre>
+  </div>
+ </div> 
+ <div class="section"> 
+  <h3 id="Injectable_Component_Node">Injectable Component Node</h3> 
+  <p>Alternatively, model classes may inject an instance of the <tt>com.citytechinc.aem.bedrock.api.node.ComponentNode</tt> class to provide the same functionality as the abstract class described above.</p> 
+  <div class="source"> 
+   <pre>import com.citytechinc.aem.bedrock.api.node.ComponentNode
+
+@Model(adaptables = [Resource, SlingHttpServletRequest])
+class Navigation {
+
+    @Inject
+    ComponentNode componentNode
+
+    String getTitle() {
+        componentNode.get(&quot;jcr:title&quot;, &quot;&quot;)
+    }
+}
+</pre>
+  </div> 
+  <p>See the <tt>ComponentNode</tt> <a class="externalLink" href="http://code.citytechinc.com/bedrock/apidocs/com/citytechinc/aem/bedrock/api/node/ComponentNode.html">Javadoc</a> for details of the available methods.</p>
+ </div> 
+ <div class="section"> 
+  <h3 id="Sling_Models_Injectors">Sling Models Injectors</h3> 
+  <p>In addition to Bedrock’s component API, the framework also supplies a set of custom Sling Models injectors to support injection of common Sling and AEM objects for the current component. See the <a href="../injectors.html">Injectors</a> page for additional information.</p>
+ </div> 
+ <div class="section"> 
+  <h3 id="Sightly_Integration">Sightly Integration</h3> 
+  <p>Sling Models-based components (i.e. POJOs with the <tt>@org.apache.sling.models.annotations.Model</tt> annotation) can be instantiated in Sightly templates with a <a class="externalLink" href="https://github.com/Adobe-Marketing-Cloud/sightly-spec/blob/master/SPECIFICATION.md#221-use">data-sly-use</a> block statement. Since Bedrock components are just “decorated” Sling Models, nothing additional is required.</p> 
+  <p>The Sightly template for the preceding <tt>Navigation</tt> component would be implemented as follows:</p> 
+  <div class="source"> 
+   <pre>&lt;sly data-sly-use.navigation=&quot;com.projectname.components.content.Navigation&quot;&gt;
+    &lt;h1&gt;${navigation.title}&lt;/h1&gt;
+
+    &lt;ul data-sly-list.page=&quot;${navigation.pages}&quot;&gt;
+        &lt;li&gt;&lt;a href=&quot;${page.href}&quot;&gt;${page.title}&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/sly&gt;
+</pre>
+  </div>
+ </div> 
+ <div class="section"> 
+  <h3 id="JSP_Support">JSP Support</h3> 
+  <p>Bedrock includes legacy JSP support for projects where Sightly templates are not feasible. The component JSP needs to include the Bedrock <tt>global.jsp</tt> to define the tag namespace and ensure that required variables are set in the page context.</p> 
+  <p>Component model classes can be instantiated in one of two ways:</p> 
   <ul> 
    <li>Include the <tt>&lt;bedrock:component/&gt;</tt> tag in the JSP as shown below.</li> 
    <li>Define a <tt>className</tt> attribute in the <tt>.content.xml</tt> descriptor file for the component and annotate the Java class with the <tt>com.citytechinc.aem.bedrock.api.components.annotations.AutoInstantiate</tt> annotation.</li> 
   </ul> 
-  <p>In the latter case, the <tt>global.jsp</tt> will instantiate the component class via the <tt>&lt;bedrock:defineObjects/&gt;</tt> tag included therein.</p> 
+  <p>In the latter case, the <tt>global.jsp</tt> will instantiate the model class via the <tt>&lt;bedrock:defineObjects/&gt;</tt> tag included therein.</p> 
   <div class="source"> 
    <pre>&lt;%@include file=&quot;/apps/bedrock/components/global.jsp&quot;%&gt;
 
@@ -147,67 +215,18 @@
 &lt;/ul&gt;
 </pre>
   </div> 
-  <p>The backing Java class for the component should expose getters for the values that required to render the component’s view.</p> 
-  <div class="source"> 
-   <pre>package com.projectname.components.content;
-
-import com.citytechinc.aem.bedrock.core.components.AbstractComponent;
-import com.citytechinc.aem.bedrock.api.content.page.PageDecorator;
-
-import java.util.List;
-
-@Model(adaptables=[Resource,SlingHttpServletRequest],
-    defaultInjectionStrategy=DefaultInjectionStrategy.OPTIONAL)
-public final class Navigation extends AbstractComponent {
-
-    public String getTitle() {
-        return get(&quot;title&quot;, &quot;&quot;);
-    }
-
-    public List&lt;PageDecorator&gt; getPages() {
-        return getCurrentPage().getChildren(true);
-    }
-}
-</pre>
-  </div>
+  <p>Component JSPs should contain only the HTML markup and JSTL tags necessary to render the component and it’s view permutations, rather than Java “scriptlet” blocks containing business logic.</p>
  </div> 
  <div class="section"> 
-  <h3 id="Abstract_Component_Java_Class">Abstract Component Java Class</h3> 
-  <p>The <tt>AbstractComponent</tt> class should be extended by all component backing classes. In addition to the numerous getters for retrieving and transforming properties on the current component node, the base class also exposes <tt>getComponent</tt> methods to acquire instances of other components from either an absolute path or a <tt>ComponentNode</tt>.</p> 
-  <div class="source"> 
-   <pre>final PageDecorator homepage = request.getPageManager().getPage(&quot;/content/home&quot;);
-
-// get the component node for the Homepage Latest News component
-final Optional&lt;ComponentNode&gt; latestNewsComponentNode = homepage.getComponentNode(&quot;latestnews&quot;);
-
-if (latestNewsComponentNode.isPresent()) {
-    // get an instance of the Latest News component for the given component node
-    final LatestNews latestNews = getComponent(latestNewsComponentNode.get(), LatestNews.class).get();
-}
-</pre>
-  </div> 
-  <p>See the <a class="externalLink" href="http://code.citytechinc.com/bedrock/apidocs/com/citytechinc/aem/bedrock/core/components/AbstractComponent.html">Javadoc</a> for details of the available methods.</p>
- </div> 
- <div class="section"> 
-  <h3 id="Sightly_Support">Sightly Support</h3> 
-  <p>Components extending the <tt>AbstractComponent</tt> class can be used interchangeably with both Sightly templates and JSPs.</p> 
-  <div class="source"> 
-   <pre>&lt;div data-sly-use.navigation=&quot;com.projectname.components.content.Navigation&quot;&gt;
-    &lt;h1&gt;${navigation.title}&lt;/h1&gt;
-&lt;/div&gt;
-</pre>
-  </div>
- </div> 
- <div class="section"> 
-  <h3 id="Development_Guidelines">Development Guidelines</h3> 
+  <h3 id="Component_Development_Guidelines">Component Development Guidelines</h3> 
   <ul> 
-   <li>Component beans should be <b>read-only</b>; since components are generally accessed by an anonymous user in publish mode. Repository write operations should be performed only in author mode (and replicated only when a page is activated by a content author). Since component classes are executed in both author and publish modes, ideally one should consider alternative approaches to performing write operations in a component bean: 
+   <li>Component beans should be <b>read-only</b> since requests in publish mode are generally bound to an anonymous user without write access. Repository write operations should be performed only in author mode (and replicated only when a page is activated by a content author). Since component classes are executed in both author and publish modes, ideally one should consider alternative approaches to performing write operations in a component bean: 
     <ul> 
-     <li>Delegate write operations to an OSGi service that is bound to an administrative session.</li> 
-     <li>Refactor the component to perform dialog-based content modifications by attaching a listener to the appropriate <a class="externalLink" href="http://dev.day.com/content/docs/en/cq/current/widgets-api/index.html?class=CQ.Dialog">dialog event</a>, e.g. ‘beforesubmit’.</li> 
+     <li>Delegate write operations to an OSGi service containing a service-appropriate Sling Resource Resolver.</li> 
+     <li>Refactor the component to perform dialog-based content modifications by attaching a listener to the appropriate <a class="externalLink" href="https://docs.adobe.com/docs/en/aem/6-1/ref/widgets-api/index.html?class=CQ.Dialog">dialog event</a>, e.g. ‘beforesubmit’.</li> 
      <li>Register a <a class="externalLink" href="http://www.day.com/maven/jsr170/javadocs/jcr-2.0/javax/jcr/observation/ObservationManager.html">JCR event listener</a> to trigger event-based repository updates.</li> 
     </ul></li> 
-   <li>Classes should remain stateless and contain no setters. Since the lifecycle of a component is bound to a request, state should be maintained client-side using cookies, HTML5 web storage, or DOM data attributes.</li> 
+   <li>Classes should remain stateless and contain no setters. Since the lifecycle of a component/model is bound to a request, state should be maintained client-side using cookies, local storage, or HTML data attributes.</li> 
   </ul>
  </div>
 </div>
@@ -286,7 +305,7 @@ if (latestNewsComponentNode.isPresent()) {
 		<div class="row">
 			<div class="span12">
 				<p class="pull-right"><a href="#">Back to top</a></p>
-				<p class="copyright">Copyright &copy;2015 <a href="http://www.citytechinc.com">CITYTECH, Inc.</a>. All Rights Reserved.</p>
+				<p class="copyright">Copyright &copy;2016 <a href="http://www.citytechinc.com">CITYTECH, Inc.</a>. All Rights Reserved.</p>
 			</div>
 		</div>
 	</div>

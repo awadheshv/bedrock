@@ -16,6 +16,7 @@ com.citytechinc.aem.bedrock.core.replication
 com.citytechinc.aem.bedrock.core.services
 com.citytechinc.aem.bedrock.core.services.cache
 com.citytechinc.aem.bedrock.core.servlets
+com.citytechinc.aem.bedrock.core.servlets.datasource
 com.citytechinc.aem.bedrock.core.servlets.optionsprovider
 com.citytechinc.aem.bedrock.core.servlets.paragraphs
 com.citytechinc.aem.bedrock.core.utils
